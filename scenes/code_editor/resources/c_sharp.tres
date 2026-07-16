@@ -1,0 +1,16 @@
+[gd_resource type="CodeHighlighter" format=3 uid="uid://csqe632kuiq0h"]
+
+[resource]
+number_color = Color(0.9098039, 0.5058824, 0, 1)
+symbol_color = Color(1, 1, 1, 1)
+function_color = Color(1, 0.48235294, 0.27058825, 1)
+member_variable_color = Color(1, 0.47058824, 0.14117648, 1)
+keyword_colors = {
+"namespace": Color(0.3372549, 0.6117647, 0.8392157, 1),
+"public": Color(0.3372549, 0.6117647, 0.8392157, 1),
+"using": Color(0.3372549, 0.6117647, 0.8392157, 1)
+}
+color_regions = {
+"/* *": Color(0.41568628, 0.41568628, 0.41568628, 1),
+"//": Color(0.41568628, 0.41568628, 0.41568628, 1)
+}

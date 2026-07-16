@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b0gsqwppy2pvr"]
+
+[ext_resource type="Script" uid="uid://bvy672fkmi7d4" path="res://scenes/resources/rock/rock_a.gd" id="1_gic10"]
+[ext_resource type="Texture2D" uid="uid://cg0vmuxbfgiv8" path="res://scenes/resources/rock/textures/Rocks.png" id="2_n5ovq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5ovq"]
+size = Vector2(22, 15)
+
+[node name="RockA" type="Node2D" unique_id=698557427]
+script = ExtResource("1_gic10")
+
+[node name="StaticBody" type="StaticBody2D" parent="." unique_id=784791008]
+
+[node name="Collision_1" type="CollisionShape2D" parent="StaticBody" unique_id=147097022]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_n5ovq")
+
+[node name="SpriteNode_Intact" type="Node2D" parent="." unique_id=1410229191]
+scale = Vector2(1.5, 1.5)
+
+[node name="Sprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=709492853]
+position = Vector2(0, -5.666669)
+texture = ExtResource("2_n5ovq")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)

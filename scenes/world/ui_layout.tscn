@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://c8x1r1i0sto1q"]
+
+[ext_resource type="Script" uid="uid://cof5ps1nnewu0" path="res://scenes/world/header_panel.gd" id="1_6bycu"]
+[ext_resource type="LabelSettings" uid="uid://b4ujwno1lap8e" path="res://themes/label/resource_label.tres" id="1_6ite2"]
+[ext_resource type="FontFile" uid="uid://bkbm6ucejgwf5" path="res://assets/fonts/monogram/monogram.ttf" id="2_o8jld"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ayp4"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.31283602, 0.31283605, 0.3128359, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ite2"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_6bycu"]
+font = ExtResource("2_o8jld")
+font_size = 40
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UiLayout" type="Control" unique_id=835852797]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2006024996]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HeaderMargin" type="MarginContainer" parent="VBoxContainer" unique_id=1346268476]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HeaderPanel" type="Panel" parent="VBoxContainer/HeaderMargin" unique_id=1715197364]
+layout_mode = 2
+script = ExtResource("1_6bycu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HeaderMargin/HeaderPanel" unique_id=1044014605]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 50.0
+
+[node name="WoodLabel" type="Label" parent="VBoxContainer/HeaderMargin/HeaderPanel/HBoxContainer" unique_id=390712315]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ayp4")
+text = "Wood: 0"
+label_settings = ExtResource("1_6ite2")
+vertical_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="VBoxContainer/HeaderMargin/HeaderPanel/HBoxContainer" unique_id=1577851383]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ayp4")
+text = "Gold: 158"
+label_settings = ExtResource("1_6ite2")
+vertical_alignment = 1
+
+[node name="StoneLabel" type="Label" parent="VBoxContainer/HeaderMargin/HeaderPanel/HBoxContainer" unique_id=1299838610]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ayp4")
+text = "Iron: 158"
+label_settings = ExtResource("1_6ite2")
+vertical_alignment = 1
+
+[node name="PopulationLabel" type="Label" parent="VBoxContainer/HeaderMargin/HeaderPanel/HBoxContainer" unique_id=2010276442]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ayp4")
+text = "Population: 158"
+label_settings = ExtResource("1_6ite2")
+vertical_alignment = 1
+
+[node name="TimeBox" type="HBoxContainer" parent="VBoxContainer/HeaderMargin/HeaderPanel/HBoxContainer" unique_id=803566273]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="HourLabel" type="Label" parent="VBoxContainer/HeaderMargin/HeaderPanel/HBoxContainer/TimeBox" unique_id=1194168276]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ite2")
+text = "08:"
+label_settings = SubResource("LabelSettings_6bycu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MinuteLabel" type="Label" parent="VBoxContainer/HeaderMargin/HeaderPanel/HBoxContainer/TimeBox" unique_id=1123392593]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ite2")
+text = "45"
+label_settings = SubResource("LabelSettings_6bycu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ContentMargin" type="MarginContainer" parent="VBoxContainer" unique_id=1442777499]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="FooterMargin" type="MarginContainer" parent="VBoxContainer" unique_id=317393644]
+layout_mode = 2
+mouse_filter = 2

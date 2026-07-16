@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://gn1jhpk0hbyl"]
+
+[ext_resource type="Script" uid="uid://c6tyxltmkggp7" path="res://scenes/resources/tree/tree_a.gd" id="1_22vs4"]
+[ext_resource type="Texture2D" uid="uid://dtm8ql5mg56lj" path="res://scenes/resources/tree/textures/WinterTrees.png" id="1_sownn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sownn"]
+size = Vector2(18, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78lmd"]
+size = Vector2(10, 11)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_78lmd"]
+load_path = "res://.godot/imported/WinterTrees.png-06283df9465ea648dd8b20a8863efe73.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sownn"]
+load_path = "res://.godot/imported/WinterTrees.png-06283df9465ea648dd8b20a8863efe73.ctex"
+
+[node name="TreeA" type="Node2D" unique_id=698557427]
+script = ExtResource("1_22vs4")
+
+[node name="StaticBody" type="StaticBody2D" parent="." unique_id=784791008]
+
+[node name="Collision_1" type="CollisionShape2D" parent="StaticBody" unique_id=514938635]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_sownn")
+
+[node name="Collision_2" type="CollisionShape2D" parent="StaticBody" unique_id=514102758]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_78lmd")
+
+[node name="SpriteNode_Cut" type="Node2D" parent="." unique_id=155679964]
+visible = false
+scale = Vector2(1.5, 1.5)
+
+[node name="SpriteCut" type="Sprite2D" parent="SpriteNode_Cut" unique_id=1958199495]
+position = Vector2(0, -3)
+texture = SubResource("CompressedTexture2D_78lmd")
+region_enabled = true
+region_rect = Rect2(0, 8, 16, 8)
+
+[node name="SpriteNode_Intact" type="Node2D" parent="." unique_id=1410229191]
+scale = Vector2(1.5, 1.5)
+
+[node name="TopSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=2020121159]
+z_index = 2
+position = Vector2(0, -11)
+texture = SubResource("CompressedTexture2D_sownn")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 8)
+
+[node name="BottomSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=709492853]
+position = Vector2(0, -3)
+texture = ExtResource("1_sownn")
+region_enabled = true
+region_rect = Rect2(16, 8, 16, 8)

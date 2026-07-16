@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://da0dif3jx5nm5"]
+
+[ext_resource type="PackedScene" uid="uid://cdeimvkxpfwjc" path="res://scenes/units/paysants/paysant.tscn" id="1_dphjl"]
+[ext_resource type="PackedScene" uid="uid://gn1jhpk0hbyl" path="res://scenes/resources/tree/tree_a.tscn" id="2_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://fj2hnyk1cvux" path="res://scenes/buildings/inn_a.tscn" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://b0gsqwppy2pvr" path="res://scenes/resources/rock/rock_a.tscn" id="3_6m72w"]
+[ext_resource type="PackedScene" uid="uid://c8x1r1i0sto1q" path="res://scenes/world/ui_layout.tscn" id="5_v5dby"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1fp7r"]
+vertices = PackedVector2Array(77, -6, 314.92188, 178.92969, -312.04688, 175.0625, -163, 58, 35, -6, 147, -129, 312.0703, -186.97656, 77, -41, 143, -126, 26, -86, 113, -126, 35, -41, 27, -70, -205, 58, -313.9375, -186.00781, -205, 23, 26, -138, 109, -129, 147, -158, 109, -158, 23, -38, -163, 23, -7, -38, -133, -129, -133, -158, -26, -138, -26, -86, 113, -129, -171, -129, -167, -129, -167, -126, -195, -126, -195, -97, -191, -97, -191, -94, -161, -94, -161, -97, -157, -97, -157, -126, -137, -126, -137, -129, 143, -129, 27, -41, -11, -70, -11, -41, -7, -41, 23, -41, -171, -158)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 1, 0, 7, 8), PackedInt32Array(9, 10, 8, 7, 11, 12), PackedInt32Array(13, 3, 2), PackedInt32Array(13, 2, 14, 15), PackedInt32Array(10, 9, 16, 17), PackedInt32Array(6, 5, 18), PackedInt32Array(14, 6, 18, 19), PackedInt32Array(20, 4, 3, 21, 22), PackedInt32Array(23, 24, 25, 26), PackedInt32Array(17, 27, 10), PackedInt32Array(14, 19, 17, 16, 24), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(32, 33, 34), PackedInt32Array(35, 36, 37), PackedInt32Array(37, 38, 39), PackedInt32Array(39, 40, 23), PackedInt32Array(8, 41, 5), PackedInt32Array(42, 12, 11, 4), PackedInt32Array(9, 12, 43, 26), PackedInt32Array(44, 45, 22, 21), PackedInt32Array(20, 46, 42, 4), PackedInt32Array(47, 28, 31, 14), PackedInt32Array(39, 23, 26, 43, 44, 21, 37), PackedInt32Array(35, 37, 21), PackedInt32Array(34, 35, 21, 15), PackedInt32Array(34, 15, 14, 32), PackedInt32Array(31, 32, 14), PackedInt32Array(24, 47, 14), PackedInt32Array(24, 16, 25)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-324, -196, 322, -197, 325, 189, -322, 185)])
+
+[node name="World" type="Node2D" unique_id=2097103399]
+
+[node name="CameraNode" type="Node2D" parent="." unique_id=710322124]
+
+[node name="Camera" type="Camera2D" parent="CameraNode" unique_id=1127864700]
+zoom = Vector2(3, 3)
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="." unique_id=408972864]
+navigation_polygon = SubResource("NavigationPolygon_1fp7r")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion" unique_id=1223635213]
+
+[node name="Ressources" type="Node" parent="NavigationRegion" unique_id=501669285]
+
+[node name="TreeA" parent="NavigationRegion/Ressources" unique_id=19429984 instance=ExtResource("2_sl2e5")]
+position = Vector2(-176, -104)
+
+[node name="TreeA2" parent="NavigationRegion/Ressources" unique_id=698557427 instance=ExtResource("2_sl2e5")]
+position = Vector2(-152, -136)
+
+[node name="TreeA3" parent="NavigationRegion/Ressources" unique_id=1048357860 instance=ExtResource("2_sl2e5")]
+position = Vector2(128, -136)
+
+[node name="TreeA4" parent="NavigationRegion/Ressources" unique_id=213054071 instance=ExtResource("2_sl2e5")]
+position = Vector2(8, -48)
+
+[node name="InnA" parent="NavigationRegion/Ressources" unique_id=201238199 instance=ExtResource("3_1fp7r")]
+position = Vector2(0, -96)
+
+[node name="RockA" parent="NavigationRegion/Ressources" unique_id=150207940 instance=ExtResource("3_6m72w")]
+position = Vector2(-184, 48)
+
+[node name="RockA2" parent="NavigationRegion/Ressources" unique_id=857187407 instance=ExtResource("3_6m72w")]
+position = Vector2(56, -16)
+
+[node name="Paysant" parent="." unique_id=317030786 instance=ExtResource("1_dphjl")]
+position = Vector2(-104, -24)
+
+[node name="Paysant2" parent="." unique_id=1446894705 instance=ExtResource("1_dphjl")]
+position = Vector2(168, -24)
+
+[node name="Paysant3" parent="." unique_id=1282801861 instance=ExtResource("1_dphjl")]
+position = Vector2(168, -56)
+
+[node name="Ui" type="CanvasLayer" parent="." unique_id=1133676491]
+
+[node name="UiLayout" parent="Ui" unique_id=835852797 instance=ExtResource("5_v5dby")]

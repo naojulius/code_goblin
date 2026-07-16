@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://fj2hnyk1cvux"]
+
+[ext_resource type="Script" uid="uid://1ijkbcpnglyk" path="res://scenes/buildings/inn_a.gd" id="1_c325c"]
+[ext_resource type="Texture2D" uid="uid://th2mmh74n7uk" path="res://scenes/buildings/textures/inn.png" id="1_p6bs3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6bs3"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c325c"]
+size = Vector2(32, 16)
+
+[node name="InnA" type="Node2D" unique_id=698557427]
+script = ExtResource("1_c325c")
+
+[node name="StaticBody" type="StaticBody2D" parent="." unique_id=784791008]
+
+[node name="Collision_1" type="CollisionShape2D" parent="StaticBody" unique_id=514938635]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_p6bs3")
+
+[node name="Collision_2" type="CollisionShape2D" parent="StaticBody" unique_id=514102758]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_c325c")
+
+[node name="SpriteNode_Intact" type="Node2D" parent="." unique_id=1410229191]
+position = Vector2(0, -2)
+scale = Vector2(2, 2)
+
+[node name="TopSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=2020121159]
+z_index = 2
+position = Vector2(0, -11)
+texture = ExtResource("1_p6bs3")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 8)
+
+[node name="BottomSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=709492853]
+position = Vector2(0, -3)
+texture = ExtResource("1_p6bs3")
+region_enabled = true
+region_rect = Rect2(48, 8, 16, 8)

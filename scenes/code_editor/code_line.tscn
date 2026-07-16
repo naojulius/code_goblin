@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cq448ycxv6i03"]
+
+[ext_resource type="FontFile" uid="uid://dnriwqpu7a48c" path="res://assets/fonts/JetbrainsMono/JetBrainsMono-Regular.ttf" id="1_sxa4g"]
+
+[node name="Line_01" type="Label" unique_id=334790801]
+custom_minimum_size = Vector2(40, 0)
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_sxa4g")
+text = "1"
+justification_flags = 129

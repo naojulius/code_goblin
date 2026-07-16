@@ -1,0 +1,312 @@
+[gd_scene format=3 uid="uid://cur7q1g1vtooo"]
+
+[ext_resource type="Script" uid="uid://doaomfxgj5hnj" path="res://scenes/code_editor/code_editor.gd" id="1_upq1j"]
+[ext_resource type="Texture2D" uid="uid://bhtteu17gqji2" path="res://assets/textures/icons/settings.svg" id="2_bsxr1"]
+[ext_resource type="Texture2D" uid="uid://dfyf3ees6obkh" path="res://assets/textures/icons/play.svg" id="2_vrhkf"]
+[ext_resource type="Texture2D" uid="uid://s2uigkkdy2cf" path="res://assets/textures/icons/close.svg" id="4_bpxwm"]
+[ext_resource type="FontFile" uid="uid://dnriwqpu7a48c" path="res://assets/fonts/JetbrainsMono/JetBrainsMono-Regular.ttf" id="5_beo4a"]
+[ext_resource type="PackedScene" uid="uid://cq448ycxv6i03" path="res://scenes/code_editor/code_line.tscn" id="5_bsxr1"]
+[ext_resource type="CodeHighlighter" uid="uid://csqe632kuiq0h" path="res://scenes/code_editor/resources/c_sharp.tres" id="5_ulbfw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wu06"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50sl8"]
+content_margin_left = 5.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsxr1"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrhkf"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpxwm"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1588"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.17641908, 0.17641911, 0.17641899, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="Animation" id="Animation_vrhkf"]
+resource_name = "hide"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ulbfw"]
+resource_name = "init"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bsxr1"]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_beo4a"]
+_data = {
+&"hide": SubResource("Animation_vrhkf"),
+&"init": SubResource("Animation_ulbfw"),
+&"show": SubResource("Animation_bsxr1")
+}
+
+[node name="CodeEditor" type="Panel" unique_id=659445028]
+custom_minimum_size = Vector2(956, 1080)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -956.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4wu06")
+script = ExtResource("1_upq1j")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=790708688]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1177416212]
+layout_mode = 2
+
+[node name="Header" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=2021249536]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Header" unique_id=1448727574]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Header/HBoxContainer" unique_id=1494648209]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_50sl8")
+text = "Unit 10"
+fit_content = true
+vertical_alignment = 1
+
+[node name="LanguageContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Header/HBoxContainer" unique_id=1307633492]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="C_Sharp" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=479706516]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "C#"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Python" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=2130683282]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "Phython"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Php" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=1948579403]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "Php"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Typescript" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=1720205277]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "TypeScript"
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Header/HBoxContainer" unique_id=1478576309]
+layout_mode = 2
+alignment = 2
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/HBoxContainer" unique_id=982251041]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("2_vrhkf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SettingButton" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/HBoxContainer" unique_id=1310678496]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("2_bsxr1")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/HBoxContainer" unique_id=1974182049]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("4_bpxwm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextEdit" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=194829931]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextEdit" unique_id=1538396389]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LineNumberMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextEdit/HBoxContainer" unique_id=955684594]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+
+[node name="LineContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TextEdit/HBoxContainer/LineNumberMargin" unique_id=533934426]
+layout_mode = 2
+
+[node name="Line_01" parent="MarginContainer/VBoxContainer/TextEdit/HBoxContainer/LineNumberMargin/LineContainer" unique_id=334790801 instance=ExtResource("5_bsxr1")]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/TextEdit/HBoxContainer" unique_id=1164668891]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_beo4a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bsxr1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vrhkf")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_bpxwm")
+text = "namespace Paysant;
+
+public class Paysant : Unit 
+{
+    public void Run() 
+    {
+        // 1. Le joueur configure son unité en début de boucle
+        unit.SetMaxCapacity(5); 
+
+        string maRessource = \"wood\";
+
+        // 2. L'unité s'adapte automatiquement !
+        if (unit.GetCarriedResources() >= unit.GetMaxCapacity())
+        {
+            unit.Deposit();
+        }
+        else
+        {
+            unit.Gather(maRessource);
+        }
+    }
+}"
+middle_mouse_paste_enabled = false
+scroll_smooth = true
+minimap_draw = true
+caret_blink = true
+syntax_highlighter = ExtResource("5_ulbfw")
+highlight_all_occurrences = true
+highlight_current_line = true
+
+[node name="Console" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1739282222]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="ConsoleOutput" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Console" unique_id=1173712068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1588")
+bbcode_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1686214876]
+libraries/ = SubResource("AnimationLibrary_beo4a")
+autoplay = &"init"
+speed_scale = 2.0
