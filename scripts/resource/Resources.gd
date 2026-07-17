@@ -1,5 +1,7 @@
 class_name Ressources
 extends Node2D
+const LABEL_NODE = preload("uid://c6h05mcme6owb")
+
 
 const MAX_CAPACITY: int = 10
 var current_capacity: int = MAX_CAPACITY

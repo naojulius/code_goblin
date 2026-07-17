@@ -2,7 +2,7 @@
 extends Unit
 class_name Paysant
 
-@export var base_speed := 30.0
+@export var base_speed := 40.0
 @export var max_resource_capacity := 10
 
 var _resources_carried := 0
@@ -54,12 +54,14 @@ func gather_closest_resource(resource_group: String) -> void:
 		current_target_node = null
 	
 	if closest_resource != null:
-		print("Found", closest_resource)
 		current_target_node = closest_resource
 		
 		if is_arrived_at_node(closest_resource):
 			_resources_carried = max_resource_capacity
 			closest_resource.gather(_resources_carried)
+			if closest_resource and closest_resource.has_method("add_label"):
+				closest_resource.add_label(str("- ", _resources_carried), closest_resource.global_position)
+				
 			log_to_editor("Arrivé ! Récolte de %s terminée. Sac : %d/%d" % [group_name, _resources_carried, max_resource_capacity], "success")
 			
 			# OPTIONNEL : On force l'arrêt du NavigationAgent pour éviter qu'il continue de glisser
@@ -112,5 +114,12 @@ func _update_resource() -> void:
 	match _resource_carried_name:
 		"wood":
 			ResourceManager.wood += _resources_carried
+			add_label(str(_resource_carried_name, "+ ", _resources_carried), current_target_node)
 		"stone":
 			ResourceManager.stone += _resources_carried
+			add_label(str(_resource_carried_name, "+ ", _resources_carried), current_target_node)
+			
+
+func add_label(text: String, target: Variant) -> void:
+	if target and target.has_method("add_label"):
+		target.add_label(text, target.global_position)

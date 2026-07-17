@@ -33,6 +33,7 @@ visible = false
 scale = Vector2(1.5, 1.5)
 
 [node name="SpriteCut" type="Sprite2D" parent="SpriteNode_Cut" unique_id=1958199495]
+z_index = 11
 position = Vector2(0, -3)
 texture = SubResource("CompressedTexture2D_78lmd")
 region_enabled = true
@@ -42,13 +43,14 @@ region_rect = Rect2(0, 8, 16, 8)
 scale = Vector2(1.5, 1.5)
 
 [node name="TopSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=2020121159]
-z_index = 2
+z_index = 11
 position = Vector2(0, -11)
 texture = SubResource("CompressedTexture2D_sownn")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 8)
 
 [node name="BottomSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=709492853]
+z_index = 10
 position = Vector2(0, -3)
 texture = ExtResource("1_sownn")
 region_enabled = true

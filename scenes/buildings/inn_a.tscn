@@ -13,6 +13,7 @@ size = Vector2(32, 16)
 script = ExtResource("1_c325c")
 
 [node name="StaticBody" type="StaticBody2D" parent="." unique_id=784791008]
+position = Vector2(0, 16)
 
 [node name="Collision_1" type="CollisionShape2D" parent="StaticBody" unique_id=514938635]
 position = Vector2(0, -8)
@@ -23,17 +24,18 @@ position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_c325c")
 
 [node name="SpriteNode_Intact" type="Node2D" parent="." unique_id=1410229191]
-position = Vector2(0, -2)
+position = Vector2(0, 14)
 scale = Vector2(2, 2)
 
 [node name="TopSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=2020121159]
-z_index = 2
+z_index = 11
 position = Vector2(0, -11)
 texture = ExtResource("1_p6bs3")
 region_enabled = true
 region_rect = Rect2(48, 0, 16, 8)
 
 [node name="BottomSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=709492853]
+z_index = 10
 position = Vector2(0, -3)
 texture = ExtResource("1_p6bs3")
 region_enabled = true

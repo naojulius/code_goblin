@@ -245,4 +245,3 @@ parameters/idle_blend_space/blend_position = Vector2(0, 0)
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=1779079972]
 avoidance_enabled = true
-debug_enabled = true

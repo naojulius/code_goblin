@@ -20,4 +20,11 @@ func _process(_delta: float) -> void:
 		remove_from_group(group_name)
 		if is_in_group("wood"):
 			remove_from_group("wood")
+		await get_tree().create_timer(3.0).timeout
+		queue_free()
 		
+
+func add_label(text: String, _pos):
+	var label_node: Node2D = LABEL_NODE.instantiate()
+	add_child(label_node)
+	label_node.setup(text, _pos)

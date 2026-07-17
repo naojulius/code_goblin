@@ -33,7 +33,8 @@ mouse_cursor/custom_image="uid://cy2y7drpmbtd"
 folder_colors={
 "res://scenes/resources/rock/textures/": "green",
 "res://scenes/resources/tree/textures/": "green",
-"res://scenes/units/paysants/textures/": "green"
+"res://scenes/units/paysants/textures/": "green",
+"res://scenes/world/map/textures/": "green"
 }
 
 [input]

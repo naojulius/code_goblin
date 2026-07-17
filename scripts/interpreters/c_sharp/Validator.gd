@@ -130,10 +130,10 @@ func validate_braces_structure(code: String) -> Dictionary:
 	var line_num = 0
 	for line in code.split("\n"):
 		line_num += 1
-		for char in line:
-			if char == "{":
+		for _char in line:
+			if _char == "{":
 				open_braces += 1
-			elif char == "}":
+			elif _char == "}":
 				open_braces -= 1
 				if open_braces < 0:
 					return {"is_valid": false, "error": "Erreur (Ligne %d) : Accolade fermante '}' sans accolade ouvrante '{' correspondante." % line_num}

@@ -23,7 +23,7 @@ func _ready() -> void:
 	exit_button.connect("pressed", hide_editor)
 	text_edit.connect("text_changed", update_lines)
 	
-	write_line("Système d'initialisation de l'éditeur démarré...", "success")
+	write_line("", "success")
 	update_lines()
 	
 var executed_first: bool = false
