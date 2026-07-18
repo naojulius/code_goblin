@@ -1,13 +1,27 @@
 # Paysant.gd
 extends Unit
 class_name Paysant
-
+const STRING_NAME: String = "Paysant"
 @export var base_speed := 40.0
 @export var max_resource_capacity := 10
 
 var _resources_carried := 0
 var _resource_carried_name := ""
 
+# Surcharge de la méthode d'initialisation pour attribuer le bon interpréteur
+func _initialize_interpreter() -> void:
+	interpreter = InterpreterManager.get_interpreter(STRING_NAME)
+	add_child(interpreter)
+	
+	match InterpreterManager.current_language:
+		"c#":
+			code_layer.text_edit.text = PaysantDefaultCode.DEFAULT_CSHARP_CODE
+		"python":
+			code_layer.text_edit.text = PaysantDefaultCode.DEFAULT_PYTHON_CODE
+			
+	code_layer.file_button.text = str(STRING_NAME, InterpreterManager.file_extension)
+	code_layer.text_edit.syntax_highlighter = InterpreterManager.get_highlighter()
+	code_layer.update_lines()
 # --- API appelée par l'interpréteur C# ---
 
 func set_max_capacity(new_capacity: int) -> void:
@@ -49,7 +63,6 @@ func gather_closest_resource(resource_group: String) -> void:
 	var closest_resource = find_closest_in_group(group_name)
 	_resource_carried_name = group_name
 	
-	# Si l'ancienne cible a été détruite (queue_free), on la nettoie
 	if not is_instance_valid(current_target_node):
 		current_target_node = null
 	
@@ -64,13 +77,11 @@ func gather_closest_resource(resource_group: String) -> void:
 				
 			log_to_editor("Arrivé ! Récolte de %s terminée. Sac : %d/%d" % [group_name, _resources_carried, max_resource_capacity], "success")
 			
-			# OPTIONNEL : On force l'arrêt du NavigationAgent pour éviter qu'il continue de glisser
 			if navigation_agent:
 				navigation_agent.set_target_position(global_position)
 		else:
 			move_to_target(closest_resource.global_position)
 	else:
-		# Si aucun arbre n'est trouvé, on arrête le mouvement du paysan sur place
 		if navigation_agent:
 			navigation_agent.set_target_position(global_position)
 		log_to_editor("Aucune ressource du groupe '%s' trouvée !" % group_name, "error")
@@ -87,10 +98,8 @@ func deposit_at_closest_inn() -> void:
 		if is_arrived_at_node(closest_inn):
 			_update_resource()
 			_resources_carried = 0
-			# TRÈS IMPORTANT : On oublie l'auberge pour forcer la recherche d'un nouvel arbre au prochain tick !
 			current_target_node = null 
 			
-			# On stoppe la navigation actuelle
 			if navigation_agent:
 				navigation_agent.set_target_position(global_position)
 				
@@ -118,7 +127,6 @@ func _update_resource() -> void:
 		"stone":
 			ResourceManager.stone += _resources_carried
 			add_label(str(_resource_carried_name, "+ ", _resources_carried), current_target_node)
-			
 
 func add_label(text: String, target: Variant) -> void:
 	if target and target.has_method("add_label"):

@@ -1,6 +1,11 @@
+# Editor_Code.gd (Attaché à ton Panel d'édition)
 extends Panel
+
 const CODE_LINE = preload("uid://cq448ycxv6i03")
-const PROMPT = "[color=#4e9a06]paysant@_01[/color]:[color=#729fcf]~$ [/color]"
+
+# Prompt de base qu'on va formater dynamiquement
+const PROMPT_TEMPLATE = "[color=#4e9a06]%s@_01[/color]:[color=#729fcf]~$ [/color]"
+var current_prompt = "[color=#4e9a06]unit[/color]:[color=#729fcf]~$ [/color]"
 
 # L'unité actuellement contrôlée par cet éditeur
 @export var current_unit: CharacterBody2D 
@@ -12,6 +17,7 @@ const PROMPT = "[color=#4e9a06]paysant@_01[/color]:[color=#729fcf]~$ [/color]"
 @onready var console_output: RichTextLabel = $MarginContainer/VBoxContainer/Console/ConsoleOutput
 @onready var line_container: VBoxContainer = $MarginContainer/VBoxContainer/TextEdit/HBoxContainer/LineNumberMargin/LineContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var file_button: Button = $MarginContainer/VBoxContainer/FileContent/MarginContainer/HBoxContainer/File_Button_1
 
 
 func _ready() -> void:
@@ -22,11 +28,11 @@ func _ready() -> void:
 	save_button.connect("pressed", _on_save_button_pressed)
 	exit_button.connect("pressed", hide_editor)
 	text_edit.connect("text_changed", update_lines)
-	
-	write_line("", "success")
+	write_line("Système d'exploitation RTS-OS initialisé.", "success")
 	update_lines()
 	
 var executed_first: bool = false
+	
 func _process(_delta: float) -> void:
 	if not executed_first and current_unit:
 		#_on_save_button_pressed()
@@ -61,16 +67,26 @@ func update_lines():
 		label.text = str(i + 1)
 		line_container.add_child(label)
 
-# --- NOUVELLE FONCTION : Pour changer de paysan à la volée ---
+# --- MISE À JOUR : Sélection de l'unité avec prompt dynamique ---
 func select_unit(new_unit: CharacterBody2D) -> void:
 	current_unit = new_unit
 	
-	# Optionnel : Si tu stockes le code dans chaque paysan, on le charge ici
-	if current_unit and "saved_code" in current_unit:
+	if current_unit:
+		# 1. On adapte le Prompt au nom ou à la classe de l'unité (en minuscules)
+		var unit_type = "unit"
+		if current_unit is Paysant:
+			unit_type = "paysant"
+		# else if current_unit is Soldat: unit_type = "soldat" (facile pour le futur !)
+		
+		current_prompt = PROMPT_TEMPLATE % unit_type
+		
+		# 2. Chargement du code précédemment sauvegardé dans l'unité
 		text_edit.text = current_unit.saved_code
 		update_lines()
 		
-	write_line("Connecté à l'unité : " + current_unit.name, "system")
+		write_line("Établissement de la liaison avec : " + current_unit.name, "system")
+	else:
+		current_prompt = PROMPT_TEMPLATE % "user"
 
 func _on_save_button_pressed():
 	var code = text_edit.text
@@ -87,17 +103,16 @@ func _on_save_button_pressed():
 		
 	write_line("Compilation et envoi du code à " + current_unit.name + "...", "info")
 	
-	# --- APPEL DE L'INTERPRÉTEUR LOCAL DU PAYSAN ---
+	# Appel de l'interpréteur spécifique (qui a son propre validateur)
 	var result = current_unit.interpreter.execute_code(code, current_unit)
-	
-	# Sauvegarde du code dans l'unité pour ne pas le perdre en changeant de paysan
-	if "saved_code" in current_unit:
-		current_unit.saved_code = code
+	print(current_unit)
+	# Sauvegarde du code dans l'unité pour ne pas le perdre en changeant d'unité
+	current_unit.saved_code = code
 	
 	if result["is_valid"]:
-		write_line("Code appliqué avec succès sur " + current_unit.name + " !", "success")
+		write_line("Code appliqué avec succès !", "success")
 	else:
-		# Affiche l'erreur proprement dans ta console Linux
+		# Affiche l'erreur de validation renvoyée par le validateur de l'unité
 		write_line(result["error"], "error")
 	
 func write_line(text: String, type: String = "info") -> void:
@@ -115,13 +130,12 @@ func write_line(text: String, type: String = "info") -> void:
 		"system":
 			color_code = "#ad7fa8" # Violet (Système)
 
-	# Construction de la ligne : Prompt ($) + Message coloré
-	var formatted_line = "%s[color=%s]%s[/color]\n" % [PROMPT, color_code, text]
+	# Utilisation du prompt dynamique mis à jour
+	var formatted_line = "%s[color=%s]%s[/color]\n" % [current_prompt, color_code, text]
 	
-	# Ajout du texte
 	console_output.append_text(formatted_line)
 	
-	# --- FORCE LE DÉFILEMENT VERS LE BAS ---
+	# Force le défilement vers le bas
 	await get_tree().process_frame
 	var scrollbar = console_output.get_v_scroll_bar()
 	if scrollbar:

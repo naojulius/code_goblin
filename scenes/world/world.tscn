@@ -22,7 +22,9 @@ zoom = Vector2(2, 2)
 [node name="MapNode" type="Node" parent="." unique_id=2147371020]
 
 [node name="MapGenerator" parent="MapNode" unique_id=1527293692 instance=ExtResource("1_v5dby")]
-rock_cell_size = 8
+map_width = 520
+map_height = 520
+do_spawn_tree = true
 
 [node name="Buildings" type="Node" parent="." unique_id=2101198452]
 

@@ -4,7 +4,6 @@ extends CharacterBody2D
 
 const CODE_LAYER = preload("uid://cur7q1g1vtooo")
 
-
 @export var speed := 30.0
 @onready var sensor_area: Area2D = $SensorArea
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
@@ -14,7 +13,14 @@ var current_target_node: Node2D = null
 @export var interaction_distance := 25.0
 
 var code_layer: Control = null
-var interpreter: Node = null
+
+# --- SAUVEGARDE DU CODE DU JOUEUR ---
+# Cette variable permet à l'éditeur de recharger le code propre à chaque unité
+var saved_code: String = ""
+var default_code: String = ""
+
+# Déclaré avec le type de la classe de base pour accepter n'importe quel enfant (Paysant, Soldat...)
+var interpreter: Interpreter_Base = null
 
 func _ready() -> void:
 	add_to_group("populations")
@@ -25,9 +31,12 @@ func _ready() -> void:
 	sensor_area.connect("input_event", _on_sensor_area_input_event)
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	
-	var interpreter_script = load("res://scripts/interpreters/c_sharp/Interpreter.gd")
-	interpreter = interpreter_script.new()
-	add_child(interpreter)
+	# Appel de la méthode d'initialisation (qui sera surchargée par les enfants)
+	_initialize_interpreter()
+	
+func _initialize_interpreter() -> void:
+	# Par défaut, une unité générique n'a pas d'interpréteur de code, ou un interpréteur vide.
+	pass
 	
 func apply_code(csharp_code: String) -> void:
 	if interpreter:
@@ -81,5 +90,4 @@ func log_to_editor(message: String, type: String = "info") -> void:
 	if code_layer and code_layer.has_method("log_message"):
 		code_layer.log_message(message, type)
 	else:
-		# Fallback de secours dans la console si l'UI n'est pas encore instanciée
 		print("[%s - %s] %s" % [name, type.to_upper(), message])

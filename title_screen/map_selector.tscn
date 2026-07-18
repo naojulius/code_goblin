@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bd6wpkuivxvaj"]
+
+[ext_resource type="Script" uid="uid://duwkhvx0831cs" path="res://title_screen/map_selector.gd" id="1_ggg4r"]
+[ext_resource type="FontFile" uid="uid://w57yxgbn45m2" path="res://assets/fonts/JetbrainsMono/JetBrainsMono-ExtraBold.ttf" id="1_qojkc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sx481"]
+font = ExtResource("1_qojkc")
+font_size = 35
+
+[node name="MapSelector" type="Control" unique_id=935920279]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ggg4r")
+
+[node name="PanelContainer" type="Panel" parent="." unique_id=599457241]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1870095113]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1379965411]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1327155157]
+layout_mode = 2
+text = "Choose a Map"
+label_settings = SubResource("LabelSettings_sx481")
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=437692889]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=213396800]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=576797625]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PrevButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=2048335984]
+layout_mode = 2
+text = "Retour"
+
+[node name="NextButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=857273016]
+layout_mode = 2
+text = "Continuer"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1808442255]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CancelButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2" unique_id=947459874]
+layout_mode = 2
+text = "Retour"
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2" unique_id=2093993355]
+layout_mode = 2
+text = "Continuer"

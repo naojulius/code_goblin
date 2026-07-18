@@ -26,6 +26,7 @@ extends Node2D
 # --- CONFIGURATION DES ARBRES ---
 @export_group("Decorations Settings")
 # Glissez-déposez votre scène d'arbre (.tscn) ici dans l'Inspecteur
+@export var do_spawn_tree: bool = false
 @export var tree_scene: PackedScene 
 # Définissez ici la taille occupée par un arbre (ex: 2 pour un carré 2x2, 4 pour 4x4, 8 pour 8x8)
 @export_range(1, 8, 1) var tree_cell_size: int = 2
@@ -73,6 +74,7 @@ func _ready() -> void:
 	center_camera_on_map()
 
 func generate_procedural_map() -> void:
+	print("begin map generation")
 	# Sécurité si exécuté depuis l'éditeur
 	if not tile_map_layer or not detail_map_layer or not tree_container:
 		return
@@ -128,31 +130,32 @@ func generate_procedural_map() -> void:
 			
 			# L'arbre ne peut pousser que si TOUT son carré d'herbe est valide (pas d'eau ni de sable)
 			var can_spawn_tree: bool = true
-			for ox in range(tree_cell_size):
-				for oy in range(tree_cell_size):
-					var check_pos := Vector2i(x + ox, y + oy)
-					var cell_source = tile_map_layer.get_cell_source_id(check_pos)
-					if reserved_cells.has(check_pos) or cell_source != GRASS_SOURCE:
-						can_spawn_tree = false
+			if do_spawn_tree:
+				for ox in range(tree_cell_size):
+					for oy in range(tree_cell_size):
+						var check_pos := Vector2i(x + ox, y + oy)
+						var cell_source = tile_map_layer.get_cell_source_id(check_pos)
+						if reserved_cells.has(check_pos) or cell_source != GRASS_SOURCE:
+							can_spawn_tree = false
+							break
+					if not can_spawn_tree:
 						break
-				if not can_spawn_tree:
-					break
-			
-			if can_spawn_tree:
-				if tree_scene:
-					var t_noise: float = noise.get_noise_2d(float(x) + 10000.0, float(y) + 10000.0)
-					
-					# Seuil de densité de la forêt
-					if t_noise > 0.45:
-						var offset_x: float = noise.get_noise_2d(float(x) + 20000.0, float(y) + 20000.0)
-						var offset_y: float = noise.get_noise_2d(float(x) + 30000.0, float(y) + 30000.0)
+				
+				if can_spawn_tree:
+					if tree_scene:
+						var t_noise: float = noise.get_noise_2d(float(x) + 10000.0, float(y) + 10000.0)
 						
-						spawn_tree(current_pos, offset_x, offset_y)
-						
-						for ox in range(tree_cell_size):
-							for oy in range(tree_cell_size):
-								reserved_cells[Vector2i(x + ox, y + oy)] = true
-						continue
+						# Seuil de densité de la forêt
+						if t_noise > 0.45:
+							var offset_x: float = noise.get_noise_2d(float(x) + 20000.0, float(y) + 20000.0)
+							var offset_y: float = noise.get_noise_2d(float(x) + 30000.0, float(y) + 30000.0)
+							
+							spawn_tree(current_pos, offset_x, offset_y)
+							
+							for ox in range(tree_cell_size):
+								for oy in range(tree_cell_size):
+									reserved_cells[Vector2i(x + ox, y + oy)] = true
+							continue
 						
 			
 			
@@ -162,6 +165,8 @@ func generate_procedural_map() -> void:
 				if d_noise > 0.4:
 					var detail_coords: Vector2i = DETAIL_2_COORDS if d_noise > 0.7 else DETAIL_1_COORDS
 					detail_map_layer.set_cell(current_pos, DETAIL_SOURCE, detail_coords)
+					
+	print("end map generation")
 
 func spawn_tree(grid_pos: Vector2i, offset_x: float, offset_y: float) -> void:
 	if not tree_scene:

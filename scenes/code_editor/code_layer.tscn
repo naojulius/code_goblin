@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://cur7q1g1vtooo"]
 
 [ext_resource type="Script" uid="uid://doaomfxgj5hnj" path="res://scenes/code_editor/code_editor.gd" id="1_upq1j"]
+[ext_resource type="Script" uid="uid://cmnnaxymw46xq" path="res://scenes/code_editor/language_label.gd" id="2_50sl8"]
 [ext_resource type="Texture2D" uid="uid://bhtteu17gqji2" path="res://assets/textures/icons/settings.svg" id="2_bsxr1"]
 [ext_resource type="Texture2D" uid="uid://dfyf3ees6obkh" path="res://assets/textures/icons/play.svg" id="2_vrhkf"]
 [ext_resource type="Texture2D" uid="uid://s2uigkkdy2cf" path="res://assets/textures/icons/close.svg" id="4_bpxwm"]
 [ext_resource type="FontFile" uid="uid://dnriwqpu7a48c" path="res://assets/fonts/JetbrainsMono/JetBrainsMono-Regular.ttf" id="5_beo4a"]
 [ext_resource type="PackedScene" uid="uid://cq448ycxv6i03" path="res://scenes/code_editor/code_line.tscn" id="5_bsxr1"]
-[ext_resource type="CodeHighlighter" uid="uid://csqe632kuiq0h" path="res://scenes/code_editor/resources/c_sharp.tres" id="5_ulbfw"]
+[ext_resource type="FontFile" uid="uid://c70u3ivl5550c" path="res://assets/fonts/JetbrainsMono/JetBrainsMono-Medium.ttf" id="5_vrhkf"]
+[ext_resource type="CodeHighlighter" uid="uid://tri3vsgf3hax" path="res://themes/highlighters/python.tres" id="9_bpxwm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wu06"]
 bg_color = Color(0, 0, 0, 1)
@@ -14,6 +16,16 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50sl8"]
 content_margin_left = 5.0
 draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2duf"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.23103678, 0.23103684, 0.23103672, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cg4g5"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.115634866, 0.11563488, 0.11563481, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsxr1"]
 draw_center = false
@@ -177,33 +189,10 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="C_Sharp" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=479706516]
-custom_minimum_size = Vector2(30, 30)
+[node name="LanguageLabel" type="Label" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=433081926]
 layout_mode = 2
 text = "C#"
-icon_alignment = 1
-expand_icon = true
-
-[node name="Python" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=2130683282]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-text = "Phython"
-icon_alignment = 1
-expand_icon = true
-
-[node name="Php" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=1948579403]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-text = "Php"
-icon_alignment = 1
-expand_icon = true
-
-[node name="Typescript" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=1720205277]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-text = "TypeScript"
-icon_alignment = 1
-expand_icon = true
+script = ExtResource("2_50sl8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Header/HBoxContainer" unique_id=1478576309]
 layout_mode = 2
@@ -232,6 +221,28 @@ size_flags_horizontal = 3
 icon = ExtResource("4_bpxwm")
 icon_alignment = 1
 expand_icon = true
+
+[node name="FileContent" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=580700335]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/FileContent" unique_id=1536700367]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/FileContent/MarginContainer" unique_id=869973436]
+layout_mode = 2
+
+[node name="File_Button_1" type="Button" parent="MarginContainer/VBoxContainer/FileContent/MarginContainer/HBoxContainer" unique_id=1774868904]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_vrhkf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o2duf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cg4g5")
+text = "text.cs"
 
 [node name="TextEdit" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=194829931]
 layout_mode = 2
@@ -262,38 +273,18 @@ theme_override_fonts/font = ExtResource("5_beo4a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bsxr1")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vrhkf")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_bpxwm")
-text = "namespace Paysant;
-
-public class Paysant : Unit 
-{
-    public void Run() 
-    {
-        // 1. Le joueur configure son unité en début de boucle
-        unit.SetMaxCapacity(5); 
-
-        string maRessource = \"wood\";
-
-        // 2. L'unité s'adapte automatiquement !
-        if (unit.GetCarriedResources() >= unit.GetMaxCapacity())
-        {
-            unit.Deposit();
-        }
-        else
-        {
-            unit.Gather(maRessource);
-        }
-    }
-}"
+emoji_menu_enabled = false
 middle_mouse_paste_enabled = false
 scroll_smooth = true
 minimap_draw = true
 caret_blink = true
-syntax_highlighter = ExtResource("5_ulbfw")
+syntax_highlighter = ExtResource("9_bpxwm")
 highlight_all_occurrences = true
 highlight_current_line = true
+draw_tabs = true
 
 [node name="Console" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1739282222]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 145)
 layout_mode = 2
 
 [node name="ConsoleOutput" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Console" unique_id=1173712068]

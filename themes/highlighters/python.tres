@@ -1,0 +1,17 @@
+[gd_resource type="CodeHighlighter" format=3 uid="uid://tri3vsgf3hax"]
+
+[resource]
+number_color = Color(0.81960785, 0.6039216, 0.4, 1)
+symbol_color = Color(1, 1, 1, 1)
+function_color = Color(0.38039216, 0.6862745, 0.9372549, 1)
+member_variable_color = Color(1, 0.47058824, 0.14117648, 1)
+keyword_colors = {
+"def": Color(0.8784314, 0.42352942, 0.45882353, 1),
+"else": Color(0.8784314, 0.42352942, 0.45882353, 1),
+"if": Color(0.8784314, 0.42352942, 0.45882353, 1),
+"not": Color(0.8784314, 0.42352942, 0.45882353, 1)
+}
+color_regions = {
+"/* *": Color(0.41568628, 0.41568628, 0.41568628, 1),
+"//": Color(0.41568628, 0.41568628, 0.41568628, 1)
+}

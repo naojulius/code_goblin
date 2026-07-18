@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-CSharp_Validator="*uid://crx8dreqt7feo"
 ResourceManager="*uid://crou40wn2vkm5"
+InterpreterManager="*uid://ct04wm8u6b4ih"
+InteractiveSceneChanger="*uid://ds3vx8deuihgw"
 
 [display]
 
@@ -27,6 +28,10 @@ window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://cy2y7drpmbtd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/interactive_scene_changer/plugin.cfg")
 
 [file_customization]
 
