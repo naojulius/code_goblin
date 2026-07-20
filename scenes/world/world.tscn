@@ -2,15 +2,33 @@
 
 [ext_resource type="Script" uid="uid://8nnl8ftywy5r" path="res://scenes/world/camera_root.gd" id="1_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://c5lns0oq7wakj" path="res://scenes/tools/panel_manager/panel_manager.tscn" id="2_6m72w"]
+[ext_resource type="Script" uid="uid://dfe48mhcc7l5f" path="res://scenes/world/mouse_area.gd" id="2_bq33v"]
 [ext_resource type="PackedScene" uid="uid://cve1hnfy2aq3a" path="res://scenes/world/map/map_a.tscn" id="3_1fp7r"]
+[ext_resource type="Texture2D" uid="uid://cft5umrs88whp" path="res://assets/textures/cursors/tile_0004.png" id="3_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://dj5gwcu8pvc0a" path="res://scenes/tools/clouds/clouds.tscn" id="4_v5dby"]
 [ext_resource type="PackedScene" uid="uid://c8x1r1i0sto1q" path="res://scenes/world/ui_layout.tscn" id="5_v5dby"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5dby"]
+radius = 5.0
 
 [node name="World" type="Node2D" unique_id=2097103399]
 
 [node name="Map_A" parent="." unique_id=1368238286 instance=ExtResource("3_1fp7r")]
 
 [node name="Ui" type="CanvasLayer" parent="." unique_id=1133676491]
+
+[node name="MouseArea" type="Area2D" parent="Ui" unique_id=15748846]
+top_level = true
+z_index = 100
+script = ExtResource("2_bq33v")
+
+[node name="MouseAreaCollision" type="CollisionShape2D" parent="Ui/MouseArea" unique_id=729234318]
+shape = SubResource("CircleShape2D_v5dby")
+
+[node name="DebugView" type="Sprite2D" parent="Ui/MouseArea/MouseAreaCollision" unique_id=1740768927]
+visible = false
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_t5ptc")
 
 [node name="CameraRoot" type="Node2D" parent="Ui" unique_id=710322124]
 script = ExtResource("1_t5ptc")

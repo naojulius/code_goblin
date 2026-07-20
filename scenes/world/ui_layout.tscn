@@ -20,6 +20,9 @@ font_size = 40
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bycu"]
+size = Vector2(1926, 56)
+
 [node name="UiLayout" type="Control" unique_id=835852797]
 layout_mode = 3
 anchors_preset = 15
@@ -110,6 +113,14 @@ text = "45"
 label_settings = SubResource("LabelSettings_6bycu")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="HeaderArea" type="Area2D" parent="VBoxContainer/HeaderMargin" unique_id=1739583000 groups=["panel_manager_area"]]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="HeaderAreaCollision" type="CollisionShape2D" parent="VBoxContainer/HeaderMargin/HeaderArea" unique_id=219958602]
+position = Vector2(960, 25)
+shape = SubResource("RectangleShape2D_6bycu")
 
 [node name="ContentMargin" type="MarginContainer" parent="VBoxContainer" unique_id=1442777499]
 layout_mode = 2

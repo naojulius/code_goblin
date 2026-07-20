@@ -21,6 +21,7 @@ ResourceManager="*uid://crou40wn2vkm5"
 InterpreterManager="*uid://ct04wm8u6b4ih"
 InteractiveSceneChanger="*uid://ds3vx8deuihgw"
 PanelManager="*uid://cihx61dcfqlqk"
+MouseManager="*uid://d77rqpdtexl2"
 
 [display]
 
@@ -43,6 +44,10 @@ folder_colors={
 "res://scenes/units/paysants/textures/": "green",
 "res://scenes/world/map/textures/": "green"
 }
+
+[global_group]
+
+panel_manager_area=""
 
 [input]
 

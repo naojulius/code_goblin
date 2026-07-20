@@ -12,6 +12,7 @@ func _ready() -> void:
 	super()
 	commands.append_array(
 		[
+			preload("uid://co4pgcae8l323"), #Copy Command
 			preload("uid://dgtxmrvgt7o7m"), #Code Command
 		]
 	)

@@ -95,7 +95,7 @@ func _on_sensor_area_input_event(_viewport: Node, event: InputEvent, _shape_idx:
 			#code_layer.show_editor()
 			
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("MOUSE_LEFT") and is_unit_selected:
+	if event.is_action_pressed("MOUSE_LEFT") and is_unit_selected and not MouseManager.is_mouse_inside_panel_manager:
 		box_selector.hide_box_selector()
 		is_unit_selected = false
 		PanelManager.current_commands.clear()

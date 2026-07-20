@@ -12,6 +12,9 @@ bg_color = Color(1, 1, 1, 0.18039216)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttyqk"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pt3v"]
+size = Vector2(1931, 197)
+
 [node name="PanelManager" type="Control" unique_id=481550867]
 layout_mode = 3
 anchors_preset = 15
@@ -90,3 +93,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
+
+[node name="PanelArea" type="Area2D" parent="." unique_id=1129821008 groups=["panel_manager_area"]]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="PanelAreaCollision" type="CollisionShape2D" parent="PanelArea" unique_id=542691324]
+position = Vector2(959.5, 985.5)
+shape = SubResource("RectangleShape2D_8pt3v")
