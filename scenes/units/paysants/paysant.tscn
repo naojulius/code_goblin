@@ -210,6 +210,7 @@ nodes/idle_blend_space/position = Vector2(32, 80)
 node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"idle_time_scale", &"idle_time_scale", 0, &"idle_blend_space"]
 
 [node name="Paysant" type="CharacterBody2D" unique_id=1446894705]
+z_index = 10
 script = ExtResource("1_apki4")
 
 [node name="SensorCollision" type="CollisionShape2D" parent="." unique_id=1538625155]
@@ -245,3 +246,5 @@ parameters/idle_blend_space/blend_position = Vector2(0, 0)
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=1779079972]
 avoidance_enabled = true
+debug_enabled = true
+debug_use_custom = true

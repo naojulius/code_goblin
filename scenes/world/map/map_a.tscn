@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cve1hnfy2aq3a"]
+
+[ext_resource type="Script" uid="uid://b5ja1fvym5q2d" path="res://scenes/world/map/map.gd" id="1_lhedt"]
+[ext_resource type="PackedScene" uid="uid://dfh06m2p2fld5" path="res://scenes/world/map/map_generator.scn" id="1_y6osk"]
+[ext_resource type="PackedScene" uid="uid://c4gueftqskrf4" path="res://scenes/world/map/base_marker.tscn" id="3_80s3k"]
+[ext_resource type="Script" uid="uid://cjy0tgcf0ylkh" path="res://scenes/world/map/base_marker.gd" id="4_cdf8n"]
+[ext_resource type="PackedScene" uid="uid://b0gsqwppy2pvr" path="res://scenes/resources/rock/rock_a.tscn" id="5_cdf8n"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y6osk"]
+noise_type = 0
+seed = 1
+
+[node name="Map_A" type="Node2D" unique_id=1368238286]
+script = ExtResource("1_lhedt")
+
+[node name="MapGenerator" parent="." unique_id=1527293692 instance=ExtResource("1_y6osk")]
+map_width = 200
+map_height = 200
+noise = SubResource("FastNoiseLite_y6osk")
+do_spawn_tree = true
+
+[node name="BaseMarkers" type="Node2D" parent="." unique_id=2078548132]
+
+[node name="Base_0" parent="BaseMarkers" unique_id=536810575 instance=ExtResource("3_80s3k")]
+position = Vector2(655, -1189)
+script = ExtResource("4_cdf8n")
+
+[node name="Base_1" parent="BaseMarkers" unique_id=968599513 instance=ExtResource("3_80s3k")]
+position = Vector2(-654, 1040)
+script = ExtResource("4_cdf8n")
+
+[node name="Resources" type="Node2D" parent="." unique_id=290886695]
+
+[node name="RockA" parent="Resources" unique_id=698557427 instance=ExtResource("5_cdf8n")]
+z_index = 1
+position = Vector2(88, 72)
+
+[node name="RockA2" parent="Resources" unique_id=927030758 instance=ExtResource("5_cdf8n")]
+z_index = 1
+position = Vector2(72, 88)
+
+[node name="RockA3" parent="Resources" unique_id=1204538995 instance=ExtResource("5_cdf8n")]
+z_index = 1
+position = Vector2(-249, 64)
+
+[node name="RockA4" parent="Resources" unique_id=798089854 instance=ExtResource("5_cdf8n")]
+z_index = 1
+position = Vector2(-1409, -248)
+
+[node name="RockA5" parent="Resources" unique_id=1005976288 instance=ExtResource("5_cdf8n")]
+z_index = 1
+position = Vector2(-1073, 1008)
+
+[node name="RockA6" parent="Resources" unique_id=1761353552 instance=ExtResource("5_cdf8n")]
+z_index = 1
+position = Vector2(1446, -501)
+
+[node name="RockA7" parent="Resources" unique_id=854764138 instance=ExtResource("5_cdf8n")]
+z_index = 1
+position = Vector2(804, -1234)
+
+[node name="Buildings" type="Node2D" parent="." unique_id=1492470994]
+
+[node name="Units" type="Node2D" parent="." unique_id=1266231563]

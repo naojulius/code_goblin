@@ -1,7 +1,9 @@
 extends Building
 
 func _ready() -> void:
+	super()
 	add_to_group("inns")
+	building_name = "Inn"
 
 #add label ex: "wood +1"  on the buiding
 func add_label(text: String, _pos: Vector2):

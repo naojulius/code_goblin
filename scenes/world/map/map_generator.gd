@@ -6,7 +6,7 @@ extends Node2D
 @onready var tree_container: Node = $TreeContainer
 
 # --- RÉFÉRENCE À LA CAMÉRA ---
-@onready var camera_2d: Camera2D = $Camera2D
+#@onready var camera_2d: Camera2D = $Camera2D
 
 @export_group("Actions")
 @export_tool_button("Générer la carte") var GenerateMap = generate_procedural_map
@@ -17,10 +17,6 @@ extends Node2D
 
 # --- PARAMÈTRES DU BRUIT (NOISE) ---
 @export_group("Noise Settings")
-## Graine pour la génération de la carte. Changez ce nombre pour générer une carte totalement différente !
-@export var noise_seed: int = 0
-## Fréquence du bruit. Une valeur plus petite (ex: 0.01) créera de grands continents, une valeur plus grande (ex: 0.08) créera beaucoup de petites îles.
-@export_range(0.001, 0.2, 0.001) var noise_frequency: float = 0.01
 @export var noise: FastNoiseLite
 
 # --- CONFIGURATION DES ARBRES ---
@@ -66,15 +62,10 @@ func _ready() -> void:
 	if not noise:
 		noise = FastNoiseLite.new()
 	
-	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
-	noise.seed = noise_seed
-	noise.frequency = noise_frequency
-	
 	generate_procedural_map()
-	center_camera_on_map()
+	#center_camera_on_map()
 
 func generate_procedural_map() -> void:
-	print("begin map generation")
 	# Sécurité si exécuté depuis l'éditeur
 	if not tile_map_layer or not detail_map_layer or not tree_container:
 		return
@@ -166,7 +157,6 @@ func generate_procedural_map() -> void:
 					var detail_coords: Vector2i = DETAIL_2_COORDS if d_noise > 0.7 else DETAIL_1_COORDS
 					detail_map_layer.set_cell(current_pos, DETAIL_SOURCE, detail_coords)
 					
-	print("end map generation")
 
 func spawn_tree(grid_pos: Vector2i, offset_x: float, offset_y: float) -> void:
 	if not tree_scene:
@@ -199,8 +189,8 @@ func spawn_tree(grid_pos: Vector2i, offset_x: float, offset_y: float) -> void:
 	tree_container.add_child(tree_instance)
 
 # --- FONCTION POUR CENTRER LA CAMÉRA ---
-func center_camera_on_map() -> void:
-	if camera_2d:
+#func center_camera_on_map() -> void:
+#	if camera_2d:
 		# Puisque la carte est générée tout autour de Vector2i(0, 0),
 		# le centre mathématique parfait de la carte est maintenant en (0, 0) !
-		camera_2d.global_position = tile_map_layer.map_to_local(Vector2i.ZERO)
+#		camera_2d.global_position = tile_map_layer.map_to_local(Vector2i.ZERO)

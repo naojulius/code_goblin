@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://da0dif3jx5nm5"]
 
-[ext_resource type="PackedScene" uid="uid://cdeimvkxpfwjc" path="res://scenes/units/paysants/paysant.tscn" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://8nnl8ftywy5r" path="res://scenes/world/camera_root.gd" id="1_t5ptc"]
-[ext_resource type="PackedScene" uid="uid://dfh06m2p2fld5" path="res://scenes/world/map/map_1.scn" id="1_v5dby"]
-[ext_resource type="PackedScene" uid="uid://fj2hnyk1cvux" path="res://scenes/buildings/inn_a.tscn" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://c5lns0oq7wakj" path="res://scenes/tools/panel_manager/panel_manager.tscn" id="2_6m72w"]
+[ext_resource type="PackedScene" uid="uid://cve1hnfy2aq3a" path="res://scenes/world/map/map_a.tscn" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://dj5gwcu8pvc0a" path="res://scenes/tools/clouds/clouds.tscn" id="4_v5dby"]
 [ext_resource type="PackedScene" uid="uid://c8x1r1i0sto1q" path="res://scenes/world/ui_layout.tscn" id="5_v5dby"]
-[ext_resource type="PackedScene" uid="uid://b0gsqwppy2pvr" path="res://scenes/resources/rock/rock_a.tscn" id="6_t5ptc"]
 
 [node name="World" type="Node2D" unique_id=2097103399]
 
@@ -13,59 +12,15 @@
 
 [node name="UiLayout" parent="Ui" unique_id=835852797 instance=ExtResource("5_v5dby")]
 
+[node name="PanelManager" parent="Ui" unique_id=481550867 instance=ExtResource("2_6m72w")]
+
 [node name="CameraRoot" type="Node2D" parent="Ui" unique_id=710322124]
 script = ExtResource("1_t5ptc")
 
 [node name="Camera" type="Camera2D" parent="Ui/CameraRoot" unique_id=1127864700]
 zoom = Vector2(2, 2)
 
-[node name="MapNode" type="Node" parent="." unique_id=2147371020]
+[node name="Clouds" parent="Ui" unique_id=1266602273 instance=ExtResource("4_v5dby")]
+visible = false
 
-[node name="MapGenerator" parent="MapNode" unique_id=1527293692 instance=ExtResource("1_v5dby")]
-map_width = 520
-map_height = 520
-do_spawn_tree = true
-
-[node name="Buildings" type="Node" parent="." unique_id=2101198452]
-
-[node name="InnA" parent="Buildings" unique_id=698557427 instance=ExtResource("3_1fp7r")]
-position = Vector2(0, 200)
-
-[node name="Resources" type="Node" parent="." unique_id=1219629948]
-
-[node name="Rocks" type="Node" parent="Resources" unique_id=1818607538]
-
-[node name="RockA" parent="Resources/Rocks" unique_id=1829499475 instance=ExtResource("6_t5ptc")]
-position = Vector2(224, 160)
-
-[node name="RockA2" parent="Resources/Rocks" unique_id=1916895236 instance=ExtResource("6_t5ptc")]
-position = Vector2(208, 169)
-
-[node name="RockA3" parent="Resources/Rocks" unique_id=2027331223 instance=ExtResource("6_t5ptc")]
-position = Vector2(227, 176)
-
-[node name="RockA4" parent="Resources/Rocks" unique_id=490097245 instance=ExtResource("6_t5ptc")]
-position = Vector2(259, 936)
-
-[node name="RockA5" parent="Resources/Rocks" unique_id=1534608441 instance=ExtResource("6_t5ptc")]
-position = Vector2(435, 1032)
-
-[node name="RockA6" parent="Resources/Rocks" unique_id=223702271 instance=ExtResource("6_t5ptc")]
-position = Vector2(355, 1448)
-
-[node name="RockA7" parent="Resources/Rocks" unique_id=1443026260 instance=ExtResource("6_t5ptc")]
-position = Vector2(-69, 1648)
-
-[node name="Units" type="Node" parent="." unique_id=777781761]
-
-[node name="Paysant" parent="Units" unique_id=1446894705 instance=ExtResource("1_dphjl")]
-z_index = 10
-position = Vector2(40, 160)
-
-[node name="Paysant2" parent="Units" unique_id=401492094 instance=ExtResource("1_dphjl")]
-z_index = 10
-position = Vector2(64, 192)
-
-[node name="Paysant3" parent="Units" unique_id=1653330936 instance=ExtResource("1_dphjl")]
-z_index = 10
-position = Vector2(64, 160)
+[node name="Map_A" parent="." unique_id=1368238286 instance=ExtResource("3_1fp7r")]

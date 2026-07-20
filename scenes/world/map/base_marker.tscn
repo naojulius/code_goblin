@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c4gueftqskrf4"]
+
+[node name="Base_0" type="Marker2D" unique_id=536810575]
+
+[node name="Paysant_Marker_0" type="Marker2D" parent="." unique_id=1176586158]
+position = Vector2(0, 48)
