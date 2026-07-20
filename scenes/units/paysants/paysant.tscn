@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cdeimvkxpfwjc"]
 
 [ext_resource type="Script" uid="uid://daoqa6e1cqyx6" path="res://scenes/units/paysants/paysant.gd" id="1_apki4"]
+[ext_resource type="PackedScene" uid="uid://s3avgqj34skl" path="res://scenes/tools/box_selector/box_selector.tscn" id="2_7khmq"]
 [ext_resource type="Texture2D" uid="uid://j5vtxtj5dc5v" path="res://scenes/units/paysants/textures/orc_paysant.png" id="2_28xpp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apki4"]
@@ -213,6 +214,8 @@ node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"idle_time_s
 z_index = 10
 script = ExtResource("1_apki4")
 
+[node name="BoxSelector" parent="." unique_id=1803920234 instance=ExtResource("2_7khmq")]
+
 [node name="SensorCollision" type="CollisionShape2D" parent="." unique_id=1538625155]
 position = Vector2(0, -7.5)
 shape = SubResource("CapsuleShape2D_apki4")
@@ -248,3 +251,5 @@ parameters/idle_blend_space/blend_position = Vector2(0, 0)
 avoidance_enabled = true
 debug_enabled = true
 debug_use_custom = true
+
+[editable path="BoxSelector"]

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ResourceManager="*uid://crou40wn2vkm5"
 InterpreterManager="*uid://ct04wm8u6b4ih"
 InteractiveSceneChanger="*uid://ds3vx8deuihgw"
+PanelManager="*uid://cihx61dcfqlqk"
 
 [display]
 
@@ -38,6 +39,7 @@ enabled=PackedStringArray("res://addons/interactive_scene_changer/plugin.cfg")
 folder_colors={
 "res://scenes/resources/rock/textures/": "green",
 "res://scenes/resources/tree/textures/": "green",
+"res://scenes/tools/commands/": "red",
 "res://scenes/units/paysants/textures/": "green",
 "res://scenes/world/map/textures/": "green"
 }
@@ -77,3 +79,4 @@ MOUSE_LEFT={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"

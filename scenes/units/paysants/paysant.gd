@@ -8,6 +8,14 @@ const STRING_NAME: String = "Paysant"
 var _resources_carried := 0
 var _resource_carried_name := ""
 
+func _ready() -> void:
+	super()
+	commands.append_array(
+		[
+			preload("uid://dgtxmrvgt7o7m"), #Code Command
+		]
+	)
+
 # Surcharge de la méthode d'initialisation pour attribuer le bon interpréteur
 func _initialize_interpreter() -> void:
 	interpreter = InterpreterManager.get_interpreter(STRING_NAME)

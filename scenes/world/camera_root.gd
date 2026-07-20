@@ -1,5 +1,10 @@
 extends Node2D
 
+const CAMERA_MIN_ZOOM: float = 1.5
+const CAMERA_MAX_ZOOM: float = 2.0
+const CAMERA_ZOOM_SPEED: float = 2.0
+const CAMERA_ZOOM_STEP: float = 0.15
+
 @onready var camera: Camera2D = $Camera
 
 @export_group("Déplacements Clavier")
@@ -9,25 +14,22 @@ extends Node2D
 @export var edge_scrolling: bool = true
 @export var edge_threshold: float = 15.0
 
-@export_group("Zoom")
-@export var min_zoom: float = 0.3
-@export var max_zoom: float = 2.0
-@export var zoom_speed: float = 10.0
-@export var zoom_step: float = 0.15
-
 # Variable cible pour le zoom lissé (Défini à 0.5 par défaut)
 var _target_zoom: float = 2.0
 
 func _ready() -> void:
-	if camera:
-		# On force le zoom initial de la caméra à 0.5
-		camera.zoom = Vector2(2.0, 2.0)
-		_target_zoom = 2.0
+		
+	place_camera()
 
+func place_camera():
+	var inn = get_tree().get_first_node_in_group("inns")
+	if inn:
+		global_position = inn.global_position
+	
 func _process(delta: float) -> void:
 	# 1. Lissage du zoom
 	if camera:
-		camera.zoom = camera.zoom.lerp(Vector2(_target_zoom, _target_zoom), zoom_speed * delta)
+		camera.zoom = camera.zoom.lerp(Vector2(_target_zoom, _target_zoom), CAMERA_ZOOM_SPEED * delta)
 
 	# 2. Déplacement clavier et souris
 	var velocity := Vector2.ZERO
@@ -66,6 +68,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				_target_zoom = min(_target_zoom + zoom_step, max_zoom)
+				_target_zoom = min(_target_zoom + CAMERA_ZOOM_STEP, CAMERA_MAX_ZOOM)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				_target_zoom = max(_target_zoom - zoom_step, min_zoom)
+				_target_zoom = max(_target_zoom - CAMERA_ZOOM_STEP, CAMERA_MIN_ZOOM)

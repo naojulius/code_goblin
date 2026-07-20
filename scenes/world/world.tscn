@@ -8,11 +8,9 @@
 
 [node name="World" type="Node2D" unique_id=2097103399]
 
+[node name="Map_A" parent="." unique_id=1368238286 instance=ExtResource("3_1fp7r")]
+
 [node name="Ui" type="CanvasLayer" parent="." unique_id=1133676491]
-
-[node name="UiLayout" parent="Ui" unique_id=835852797 instance=ExtResource("5_v5dby")]
-
-[node name="PanelManager" parent="Ui" unique_id=481550867 instance=ExtResource("2_6m72w")]
 
 [node name="CameraRoot" type="Node2D" parent="Ui" unique_id=710322124]
 script = ExtResource("1_t5ptc")
@@ -20,7 +18,9 @@ script = ExtResource("1_t5ptc")
 [node name="Camera" type="Camera2D" parent="Ui/CameraRoot" unique_id=1127864700]
 zoom = Vector2(2, 2)
 
+[node name="UiLayout" parent="Ui" unique_id=835852797 instance=ExtResource("5_v5dby")]
+
+[node name="PanelManager" parent="Ui" unique_id=481550867 instance=ExtResource("2_6m72w")]
+
 [node name="Clouds" parent="Ui" unique_id=1266602273 instance=ExtResource("4_v5dby")]
 visible = false
-
-[node name="Map_A" parent="." unique_id=1368238286 instance=ExtResource("3_1fp7r")]

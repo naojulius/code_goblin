@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bhtteu17gqji2" path="res://assets/textures/icons/settings.svg" id="2_bsxr1"]
 [ext_resource type="Texture2D" uid="uid://dfyf3ees6obkh" path="res://assets/textures/icons/play.svg" id="2_vrhkf"]
 [ext_resource type="Texture2D" uid="uid://s2uigkkdy2cf" path="res://assets/textures/icons/close.svg" id="4_bpxwm"]
-[ext_resource type="FontFile" uid="uid://dnriwqpu7a48c" path="res://assets/fonts/JetbrainsMono/JetBrainsMono-Regular.ttf" id="5_beo4a"]
 [ext_resource type="PackedScene" uid="uid://cq448ycxv6i03" path="res://scenes/code_editor/code_line.tscn" id="5_bsxr1"]
-[ext_resource type="FontFile" uid="uid://c70u3ivl5550c" path="res://assets/fonts/JetbrainsMono/JetBrainsMono-Medium.ttf" id="5_vrhkf"]
+[ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="8_bpxwm"]
 [ext_resource type="CodeHighlighter" uid="uid://tri3vsgf3hax" path="res://themes/highlighters/python.tres" id="9_bpxwm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wu06"]
@@ -16,6 +15,10 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50sl8"]
 content_margin_left = 5.0
 draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_vrhkf"]
+font = ExtResource("8_bpxwm")
+font_size = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2duf"]
 content_margin_left = 5.0
@@ -192,6 +195,7 @@ size_flags_horizontal = 3
 [node name="LanguageLabel" type="Label" parent="MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=433081926]
 layout_mode = 2
 text = "C#"
+label_settings = SubResource("LabelSettings_vrhkf")
 script = ExtResource("2_50sl8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Header/HBoxContainer" unique_id=1478576309]
@@ -239,7 +243,8 @@ layout_mode = 2
 
 [node name="File_Button_1" type="Button" parent="MarginContainer/VBoxContainer/FileContent/MarginContainer/HBoxContainer" unique_id=1774868904]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_vrhkf")
+theme_override_fonts/font = ExtResource("8_bpxwm")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_o2duf")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_cg4g5")
 text = "text.cs"
@@ -269,7 +274,8 @@ layout_mode = 2
 [node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/TextEdit/HBoxContainer" unique_id=1164668891]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("5_beo4a")
+theme_override_fonts/font = ExtResource("8_bpxwm")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_bsxr1")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vrhkf")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_bpxwm")

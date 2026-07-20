@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1ijkbcpnglyk" path="res://scenes/buildings/inn_a.gd" id="1_c325c"]
 [ext_resource type="Texture2D" uid="uid://th2mmh74n7uk" path="res://scenes/buildings/textures/inn.png" id="1_p6bs3"]
+[ext_resource type="PackedScene" uid="uid://s3avgqj34skl" path="res://scenes/tools/box_selector/box_selector.tscn" id="3_egf7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6bs3"]
 size = Vector2(32, 16)
@@ -52,3 +53,10 @@ shape = SubResource("RectangleShape2D_egf7l")
 debug_color = Color(0.90304583, 0.30852312, 1.92523e-07, 0.41960785)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=321084673]
+
+[node name="BoxSelector" parent="." unique_id=1803920234 instance=ExtResource("3_egf7l")]
+
+[node name="Sprite" parent="BoxSelector" index="1" unique_id=1472096068]
+scale = Vector2(2.415, 2.415)
+
+[editable path="BoxSelector"]

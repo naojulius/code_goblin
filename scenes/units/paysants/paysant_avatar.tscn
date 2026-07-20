@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://d2ljxyebaetiu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pt3v"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jnt2h"]
+load_path = "res://.godot/imported/orc_paysant.png-46ea61056063ecd1884859479c408eac.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b57ls"]
+bg_color = Color(0.6, 0.6, 0.6, 0.52156866)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b57ls"]
+font_size = 25
+
+[sub_resource type="Animation" id="Animation_b57ls"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_jnt2h"]
+resource_name = "init"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.38333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b57ls"]
+_data = {
+&"RESET": SubResource("Animation_b57ls"),
+&"init": SubResource("Animation_jnt2h")
+}
+
+[node name="PaysantAvatar" type="Panel" unique_id=1266859745]
+custom_minimum_size = Vector2(175, 175)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -87.5
+offset_right = 87.5
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(87.5, 87.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8pt3v")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2031335386]
+position = Vector2(88.00001, 88.499985)
+scale = Vector2(10, 10)
+texture = SubResource("CompressedTexture2D_jnt2h")
+hframes = 5
+vframes = 7
+frame = 1
+
+[node name="Label" type="Label" parent="." unique_id=796831331]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_b57ls")
+text = "Paysant"
+label_settings = SubResource("LabelSettings_b57ls")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2090926563]
+libraries/ = SubResource("AnimationLibrary_b57ls")
+autoplay = &"init"

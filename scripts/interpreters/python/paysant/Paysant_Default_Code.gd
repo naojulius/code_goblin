@@ -19,7 +19,7 @@ public class Paysant : Unit
         // 1. Le joueur configure son unité en début de boucle
         unit.SetMaxCapacity(5); 
 
-        string maRessource = "wood";
+		string maRessource = "wood";
 
         // 2. L'unité s'adapte automatiquement !
         if (unit.GetCarriedResources() >= unit.GetMaxCapacity())

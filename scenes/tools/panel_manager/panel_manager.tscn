@@ -1,16 +1,13 @@
 [gd_scene format=3 uid="uid://c5lns0oq7wakj"]
 
 [ext_resource type="Script" uid="uid://cldc825u1fd8p" path="res://scenes/tools/panel_manager/panel_manager.gd" id="1_gd0ii"]
-[ext_resource type="Texture2D" uid="uid://bhtteu17gqji2" path="res://assets/textures/icons/settings.svg" id="3_ttyqk"]
+[ext_resource type="PackedScene" uid="uid://d2ljxyebaetiu" path="res://scenes/units/paysants/paysant_avatar.tscn" id="2_8pt3v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gd0ii"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14mo5"]
 bg_color = Color(1, 1, 1, 0.18039216)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pt3v"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttyqk"]
 bg_color = Color(0, 0, 0, 1)
@@ -69,9 +66,8 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/Panel/HBoxContainer/UnitPanel" unique_id=448170951]
+[node name="PaysantAvatar" parent="Panel/MarginContainer/Panel/HBoxContainer/UnitPanel" unique_id=1266859745 instance=ExtResource("2_8pt3v")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8pt3v")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Panel/HBoxContainer" unique_id=244435494]
 layout_mode = 2
@@ -81,12 +77,12 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="CommandContainer" type="Panel" parent="Panel/MarginContainer/Panel/HBoxContainer/MarginContainer" unique_id=1322394026]
+[node name="CommandContainerPanel" type="Panel" parent="Panel/MarginContainer/Panel/HBoxContainer/MarginContainer" unique_id=1322394026]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ttyqk")
 
-[node name="GridContainer" type="HBoxContainer" parent="Panel/MarginContainer/Panel/HBoxContainer/MarginContainer/CommandContainer" unique_id=152637080]
+[node name="CommandGridContainer" type="HBoxContainer" parent="Panel/MarginContainer/Panel/HBoxContainer/MarginContainer/CommandContainerPanel" unique_id=152637080]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,11 +90,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
-
-[node name="Command_A" type="Button" parent="Panel/MarginContainer/Panel/HBoxContainer/MarginContainer/CommandContainer/GridContainer" unique_id=1520836287]
-visible = false
-custom_minimum_size = Vector2(89, 89)
-layout_mode = 2
-icon = ExtResource("3_ttyqk")
-icon_alignment = 1
-expand_icon = true

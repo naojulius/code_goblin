@@ -8,11 +8,14 @@ const CODE_LAYER = preload("uid://cur7q1g1vtooo")
 @onready var sensor_area: Area2D = $SensorArea
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent
+@onready var box_selector: Node2D = $BoxSelector
+
 
 var current_target_node: Node2D = null
 @export var interaction_distance := 25.0
 
 var code_layer: Control = null
+var commands: Array[PackedScene] = []
 
 # --- SAUVEGARDE DU CODE DU JOUEUR ---
 # Cette variable permet à l'éditeur de recharger le code propre à chaque unité
@@ -21,6 +24,8 @@ var default_code: String = ""
 
 # Déclaré avec le type de la classe de base pour accepter n'importe quel enfant (Paysant, Soldat...)
 var interpreter: Interpreter_Base = null
+
+var is_unit_selected: bool = false
 
 func _ready() -> void:
 	add_to_group("populations")
@@ -84,7 +89,16 @@ func find_closest_in_group(group_name: String) -> Node2D:
 func _on_sensor_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			code_layer.show_editor()
+			PanelManager.current_commands.append_array(commands)
+			box_selector.show_box_selector()
+			is_unit_selected = true
+			#code_layer.show_editor()
+			
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("MOUSE_LEFT") and is_unit_selected:
+		box_selector.hide_box_selector()
+		is_unit_selected = false
+		PanelManager.current_commands.clear()
 			
 func log_to_editor(message: String, type: String = "info") -> void:
 	if code_layer and code_layer.has_method("log_message"):
