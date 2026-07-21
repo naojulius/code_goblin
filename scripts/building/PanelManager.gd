@@ -1,3 +1,3 @@
 extends Node
 
-var current_commands: Array[PackedScene] = []
+var current_command: Command = null

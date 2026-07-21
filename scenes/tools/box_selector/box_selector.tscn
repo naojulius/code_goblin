@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://s3avgqj34skl"]
 
 [ext_resource type="Script" uid="uid://rycqgcymgpk5" path="res://scenes/tools/box_selector/box_selector.gd" id="1_t0kbu"]
-[ext_resource type="Texture2D" uid="uid://c1ndssspdgkj0" path="res://scenes/tools/box_selector/textures/Highlighted-Boxes.png" id="3_mdmsb"]
+[ext_resource type="Texture2D" uid="uid://chj3is7ca4dfo" path="res://assets/textures/cursors/tile_0097.png" id="3_s6jjl"]
+[ext_resource type="Texture2D" uid="uid://bq073kiibxrkr" path="res://assets/textures/cursors/tile_0094.png" id="4_hefot"]
+[ext_resource type="Texture2D" uid="uid://ca0mtrrsofgv0" path="res://assets/textures/cursors/tile_0096.png" id="5_wjwv1"]
+[ext_resource type="Texture2D" uid="uid://eliif2tsqnwt" path="res://assets/textures/cursors/tile_0095.png" id="6_ftafo"]
 
 [sub_resource type="Animation" id="Animation_t0kbu"]
 resource_name = "init"
@@ -17,8 +20,22 @@ script = ExtResource("1_t0kbu")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=665354310]
 libraries/ = SubResource("AnimationLibrary_mdmsb")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1472096068]
-position = Vector2(0, -2)
-texture = ExtResource("3_mdmsb")
-hframes = 5
-frame = 3
+[node name="0" type="Sprite2D" parent="." unique_id=1067948198]
+position = Vector2(-6.0000005, -8.000003)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_s6jjl")
+
+[node name="1" type="Sprite2D" parent="." unique_id=1388169326]
+position = Vector2(5.9999995, -8.000003)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_hefot")
+
+[node name="2" type="Sprite2D" parent="." unique_id=2010278599]
+position = Vector2(-6.0000005, 3.9999957)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_wjwv1")
+
+[node name="3" type="Sprite2D" parent="." unique_id=1089207019]
+position = Vector2(5.9999995, 3.9999957)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_ftafo")

@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://dfe48mhcc7l5f" path="res://scenes/world/mouse_area.gd" id="2_bq33v"]
 [ext_resource type="PackedScene" uid="uid://cve1hnfy2aq3a" path="res://scenes/world/map/map_a.tscn" id="3_1fp7r"]
 [ext_resource type="Texture2D" uid="uid://cft5umrs88whp" path="res://assets/textures/cursors/tile_0004.png" id="3_t5ptc"]
-[ext_resource type="PackedScene" uid="uid://dj5gwcu8pvc0a" path="res://scenes/tools/clouds/clouds.tscn" id="4_v5dby"]
 [ext_resource type="PackedScene" uid="uid://c8x1r1i0sto1q" path="res://scenes/world/ui_layout.tscn" id="5_v5dby"]
+[ext_resource type="PackedScene" uid="uid://xqhejs55qmby" path="res://scenes/world/code_ui.tscn" id="7_bq33v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5dby"]
 radius = 5.0
@@ -40,5 +40,4 @@ zoom = Vector2(2, 2)
 
 [node name="PanelManager" parent="Ui" unique_id=481550867 instance=ExtResource("2_6m72w")]
 
-[node name="Clouds" parent="Ui" unique_id=1266602273 instance=ExtResource("4_v5dby")]
-visible = false
+[node name="UiCode" parent="Ui" unique_id=107279369 instance=ExtResource("7_bq33v")]

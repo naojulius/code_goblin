@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c5lns0oq7wakj"]
 
 [ext_resource type="Script" uid="uid://cldc825u1fd8p" path="res://scenes/tools/panel_manager/panel_manager.gd" id="1_gd0ii"]
-[ext_resource type="PackedScene" uid="uid://d2ljxyebaetiu" path="res://scenes/units/paysants/paysant_avatar.tscn" id="2_8pt3v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gd0ii"]
 bg_color = Color(0, 0, 0, 1)
@@ -61,16 +60,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -2
 
-[node name="UnitPanel" type="MarginContainer" parent="Panel/MarginContainer/Panel/HBoxContainer" unique_id=1490162444]
+[node name="AvatarPanel" type="MarginContainer" parent="Panel/MarginContainer/Panel/HBoxContainer" unique_id=1490162444]
 custom_minimum_size = Vector2(179, 179)
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
-
-[node name="PaysantAvatar" parent="Panel/MarginContainer/Panel/HBoxContainer/UnitPanel" unique_id=1266859745 instance=ExtResource("2_8pt3v")]
-layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Panel/HBoxContainer" unique_id=244435494]
 layout_mode = 2

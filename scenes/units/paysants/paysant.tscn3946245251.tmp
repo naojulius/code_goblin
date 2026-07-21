@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://s3avgqj34skl" path="res://scenes/tools/box_selector/box_selector.tscn" id="2_7khmq"]
 [ext_resource type="Texture2D" uid="uid://j5vtxtj5dc5v" path="res://scenes/units/paysants/textures/orc_paysant.png" id="2_28xpp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_28xpp"]
-size = Vector2(14, 15)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apki4"]
 radius = 6.0
 height = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgilm"]
+size = Vector2(14, 15)
 
 [sub_resource type="Animation" id="Animation_28xpp"]
 length = 0.001
@@ -214,29 +214,17 @@ node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"idle_time_s
 z_index = 10
 script = ExtResource("1_apki4")
 
-[node name="SensorArea" type="Area2D" parent="." unique_id=600710691]
-
-[node name="SensorCollision" type="CollisionShape2D" parent="SensorArea" unique_id=358703523]
-position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_28xpp")
-
 [node name="BoxSelector" parent="." unique_id=1803920234 instance=ExtResource("2_7khmq")]
 
-[node name="0" parent="BoxSelector" index="1" unique_id=1067948198]
-position = Vector2(-7, -13.000007)
-
-[node name="1" parent="BoxSelector" index="2" unique_id=1388169326]
-position = Vector2(6.999999, -13.000007)
-
-[node name="2" parent="BoxSelector" index="3" unique_id=2010278599]
-position = Vector2(-7.0000014, -4.0531163e-06)
-
-[node name="3" parent="BoxSelector" index="4" unique_id=1089207019]
-position = Vector2(6.999999, -4.0531163e-06)
-
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=1538625155]
+[node name="SensorCollision" type="CollisionShape2D" parent="." unique_id=1538625155]
 position = Vector2(0, -7.5)
 shape = SubResource("CapsuleShape2D_apki4")
+
+[node name="SensorArea" type="Area2D" parent="." unique_id=842307136]
+
+[node name="SensorCollision" type="CollisionShape2D" parent="SensorArea" unique_id=635050826]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_qgilm")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2014270774]
 position = Vector2(9.536743e-07, -7.5)
@@ -261,5 +249,7 @@ parameters/idle_blend_space/blend_position = Vector2(0, 0)
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=1779079972]
 avoidance_enabled = true
+debug_enabled = true
+debug_use_custom = true
 
 [editable path="BoxSelector"]

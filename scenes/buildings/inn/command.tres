@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Command" format=3 uid="uid://btq0g6lnyq8e2"]
+
+[ext_resource type="Script" uid="uid://csn8uy2pg81ow" path="res://scenes/tools/commands/command.gd" id="1_ksyhm"]
+[ext_resource type="PackedScene" uid="uid://cbug2phwhq80h" path="res://scenes/buildings/inn/avatar.tscn" id="1_so037"]
+[ext_resource type="PackedScene" uid="uid://dt5xmylg5nude" path="res://scenes/tools/commands/code_command.tscn" id="2_qlgmp"]
+
+[resource]
+script = ExtResource("1_ksyhm")
+avatar = ExtResource("1_so037")
+metadata/_custom_type_script = "uid://csn8uy2pg81ow"

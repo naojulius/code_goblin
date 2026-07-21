@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/interactive_scene_changer/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://scenes/buildings/": "green",
 "res://scenes/resources/rock/textures/": "green",
 "res://scenes/resources/tree/textures/": "green",
 "res://scenes/tools/commands/": "red",
@@ -48,6 +49,8 @@ folder_colors={
 [global_group]
 
 panel_manager_area=""
+code_manager_area=""
+code_editor=""
 
 [input]
 

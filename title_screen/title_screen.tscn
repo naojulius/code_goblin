@@ -1,23 +1,15 @@
 [gd_scene format=3 uid="uid://dtglvmpckxtwu"]
 
 [ext_resource type="Script" uid="uid://dnitpfokexc06" path="res://title_screen/title_screen.gd" id="1_2dq6q"]
-[ext_resource type="FontFile" uid="uid://fr0htnxcsqmb" path="res://assets/fonts/kaph/Kaph-Regular.ttf" id="1_g2mvh"]
-[ext_resource type="FontFile" uid="uid://bctmsqs6jiv0h" path="res://assets/fonts/JetbrainsMono/JetBrainsMono-SemiBold.ttf" id="2_dxpbd"]
+[ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="2_2dq6q"]
+[ext_resource type="AudioStream" uid="uid://cmwor8j62vj8j" path="res://assets/musics/Unknown Caverns.ogg" id="3_2dq6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxpbd"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_dxpbd"]
-font = ExtResource("1_g2mvh")
-font_size = 75
-outline_size = 50
-outline_color = Color(0.36862746, 0.54901963, 0.19215687, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dq6q"]
-draw_center = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbjqi"]
-draw_center = false
+[sub_resource type="LabelSettings" id="LabelSettings_2dq6q"]
+font = ExtResource("2_2dq6q")
+font_size = 50
 
 [node name="TitleScreen" type="Control" unique_id=1272406200]
 layout_mode = 3
@@ -37,22 +29,52 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dxpbd")
 
-[node name="TitleLabel" type="Label" parent="." unique_id=1407010243]
+[node name="TitleLabel" type="RichTextLabel" parent="." unique_id=515968719]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+offset_top = -226.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Goblin & Code"
-label_settings = SubResource("LabelSettings_dxpbd")
+theme_override_colors/font_outline_color = Color(0.35456306, 0.35456306, 0.35456306, 1)
+theme_override_constants/outline_size = 52
+theme_override_fonts/normal_font = ExtResource("2_2dq6q")
+theme_override_fonts/bold_font = ExtResource("2_2dq6q")
+theme_override_fonts/bold_italics_font = ExtResource("2_2dq6q")
+theme_override_fonts/italics_font = ExtResource("2_2dq6q")
+theme_override_fonts/mono_font = ExtResource("2_2dq6q")
+theme_override_font_sizes/normal_font_size = 150
+theme_override_font_sizes/bold_font_size = 150
+theme_override_font_sizes/bold_italics_font_size = 150
+theme_override_font_sizes/italics_font_size = 150
+theme_override_font_sizes/mono_font_size = 150
+bbcode_enabled = true
+text = "{ [rainbow freq=0][shake rate=0 level=0][b]Code Craft[/b][/shake][/rainbow] }"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=136611234]
+[node name="Label" type="Label" parent="TitleLabel" unique_id=1546964195]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Goblin chaos"
+label_settings = SubResource("LabelSettings_2dq6q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonBoxContainer" type="VBoxContainer" parent="." unique_id=136611234]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,19 +88,9 @@ offset_bottom = 385.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=59000456]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2dq6q")
+[node name="Sounds" type="Node" parent="." unique_id=1755734750]
 
-[node name="PlayButton" type="Button" parent="VBoxContainer/Panel" unique_id=1725631634]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_dxpbd")
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_vbjqi")
-text = "Play"
+[node name="BackgroundAudioPlayer" type="AudioStreamPlayer" parent="Sounds" unique_id=1112632360]
+stream = ExtResource("3_2dq6q")
+volume_db = -5.0
+autoplay = true

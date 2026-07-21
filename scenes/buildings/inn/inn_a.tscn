@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://fj2hnyk1cvux"]
 
-[ext_resource type="Script" uid="uid://1ijkbcpnglyk" path="res://scenes/buildings/inn_a.gd" id="1_c325c"]
+[ext_resource type="Script" uid="uid://1ijkbcpnglyk" path="res://scenes/buildings/inn/inn_a.gd" id="1_c325c"]
 [ext_resource type="Texture2D" uid="uid://th2mmh74n7uk" path="res://scenes/buildings/textures/inn.png" id="1_p6bs3"]
 [ext_resource type="PackedScene" uid="uid://s3avgqj34skl" path="res://scenes/tools/box_selector/box_selector.tscn" id="3_egf7l"]
+[ext_resource type="Texture2D" uid="uid://c0jcoun44856y" path="res://scenes/buildings/textures/buildings_texture.png" id="3_uy4ow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6bs3"]
 size = Vector2(32, 16)
@@ -33,6 +34,7 @@ position = Vector2(0, 14)
 scale = Vector2(2, 2)
 
 [node name="TopSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=2020121159]
+visible = false
 z_index = 11
 position = Vector2(0, -11)
 texture = ExtResource("1_p6bs3")
@@ -40,11 +42,19 @@ region_enabled = true
 region_rect = Rect2(48, 0, 16, 8)
 
 [node name="BottomSprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=709492853]
+visible = false
 z_index = 10
 position = Vector2(0, -3)
 texture = ExtResource("1_p6bs3")
 region_enabled = true
 region_rect = Rect2(48, 8, 16, 8)
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="SpriteNode_Intact" unique_id=671911691]
+position = Vector2(0, -6.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_uy4ow")
+region_enabled = true
+region_rect = Rect2(96, 32, 32, 32)
 
 [node name="SensorArea" type="Area2D" parent="." unique_id=1063979132]
 
@@ -56,7 +66,16 @@ debug_color = Color(0.90304583, 0.30852312, 1.92523e-07, 0.41960785)
 
 [node name="BoxSelector" parent="." unique_id=1803920234 instance=ExtResource("3_egf7l")]
 
-[node name="Sprite" parent="BoxSelector" index="1" unique_id=1472096068]
-scale = Vector2(2.415, 2.415)
+[node name="0" parent="BoxSelector" index="1" unique_id=1067948198]
+position = Vector2(-16.000002, -16.000008)
+
+[node name="1" parent="BoxSelector" index="2" unique_id=1388169326]
+position = Vector2(15.999999, -16.000008)
+
+[node name="2" parent="BoxSelector" index="3" unique_id=2010278599]
+position = Vector2(-16.000002, 15.999997)
+
+[node name="3" parent="BoxSelector" index="4" unique_id=1089207019]
+position = Vector2(15.999998, 15.999997)
 
 [editable path="BoxSelector"]

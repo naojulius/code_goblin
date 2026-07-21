@@ -2,7 +2,7 @@ extends Node
 const C_SHARP = preload("uid://bvofuoul0cu67")
 const PYTHON = preload("uid://tri3vsgf3hax")
 
-var current_language: String = "c#"
+var current_language: String = "python"
 var file_extension: String = ".py"
 
 func get_highlighter() -> Resource:

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmwor8j62vj8j"
+path="res://.godot/imported/Unknown Caverns.ogg-84ab354de585b61c61c8a328987aaae2.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/musics/Unknown Caverns.ogg"
+dest_files=["res://.godot/imported/Unknown Caverns.ogg-84ab354de585b61c61c8a328987aaae2.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

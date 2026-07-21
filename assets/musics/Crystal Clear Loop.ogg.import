@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://rwh5pkykfeep"
+path="res://.godot/imported/Crystal Clear Loop.ogg-9765900cb3a1ca5236f142f86c077431.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/musics/Crystal Clear Loop.ogg"
+dest_files=["res://.godot/imported/Crystal Clear Loop.ogg-9765900cb3a1ca5236f142f86c077431.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,16 +1,13 @@
 [gd_scene format=3 uid="uid://d2ljxyebaetiu"]
 
+[ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="1_e0ywh"]
+[ext_resource type="Script" uid="uid://qu5550iuwn27" path="res://scripts/avatar/avatar.gd" id="1_n6we6"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pt3v"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jnt2h"]
 load_path = "res://.godot/imported/orc_paysant.png-46ea61056063ecd1884859479c408eac.ctex"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b57ls"]
-bg_color = Color(0.6, 0.6, 0.6, 0.52156866)
-
-[sub_resource type="LabelSettings" id="LabelSettings_b57ls"]
-font_size = 25
 
 [sub_resource type="Animation" id="Animation_b57ls"]
 length = 0.001
@@ -50,6 +47,13 @@ _data = {
 &"init": SubResource("Animation_jnt2h")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b57ls"]
+bg_color = Color(0.6, 0.6, 0.6, 0.52156866)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b57ls"]
+font = ExtResource("1_e0ywh")
+font_size = 30
+
 [node name="PaysantAvatar" type="Panel" unique_id=1266859745]
 custom_minimum_size = Vector2(175, 175)
 anchors_preset = 8
@@ -65,6 +69,8 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(87.5, 87.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_8pt3v")
+script = ExtResource("1_n6we6")
+has_animation = true
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2031335386]
 position = Vector2(88.00001, 88.499985)
@@ -73,6 +79,10 @@ texture = SubResource("CompressedTexture2D_jnt2h")
 hframes = 5
 vframes = 7
 frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2090926563]
+libraries/ = SubResource("AnimationLibrary_b57ls")
+autoplay = &"init"
 
 [node name="Label" type="Label" parent="." unique_id=796831331]
 layout_mode = 1
@@ -88,7 +98,3 @@ text = "Paysant"
 label_settings = SubResource("LabelSettings_b57ls")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2090926563]
-libraries/ = SubResource("AnimationLibrary_b57ls")
-autoplay = &"init"

@@ -2,7 +2,7 @@
 class_name Unit
 extends CharacterBody2D
 
-const CODE_LAYER = preload("uid://cur7q1g1vtooo")
+#const CODE_LAYER = preload("uid://cur7q1g1vtooo")
 
 @export var speed := 30.0
 @onready var sensor_area: Area2D = $SensorArea
@@ -14,9 +14,9 @@ const CODE_LAYER = preload("uid://cur7q1g1vtooo")
 var current_target_node: Node2D = null
 @export var interaction_distance := 25.0
 
-var code_layer: Control = null
-var commands: Array[PackedScene] = []
-
+#var code_layer: Control = null
+#var commands: Array[PackedScene] = []
+var command: Command = null
 # --- SAUVEGARDE DU CODE DU JOUEUR ---
 # Cette variable permet à l'éditeur de recharger le code propre à chaque unité
 var saved_code: String = ""
@@ -26,18 +26,19 @@ var default_code: String = ""
 var interpreter: Interpreter_Base = null
 
 var is_unit_selected: bool = false
+var code_editor: Control = null
 
 func _ready() -> void:
 	add_to_group("populations")
-	code_layer = CODE_LAYER.instantiate()
-	canvas_layer.add_child(code_layer)
-	code_layer.current_unit = self
+	#code_layer = CODE_LAYER.instantiate()
+	#canvas_layer.add_child(code_layer)
+	#code_layer.current_unit = self
 	
 	sensor_area.connect("input_event", _on_sensor_area_input_event)
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	
 	# Appel de la méthode d'initialisation (qui sera surchargée par les enfants)
-	_initialize_interpreter()
+
 	
 func _initialize_interpreter() -> void:
 	# Par défaut, une unité générique n'a pas d'interpréteur de code, ou un interpréteur vide.
@@ -89,19 +90,26 @@ func find_closest_in_group(group_name: String) -> Node2D:
 func _on_sensor_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			PanelManager.current_commands.append_array(commands)
+			PanelManager.current_command = command
 			box_selector.show_box_selector()
 			is_unit_selected = true
-			#code_layer.show_editor()
+			
+func show_editor():
+	code_editor = get_tree().get_first_node_in_group("code_editor")
+	
+	if code_editor:
+		code_editor.current_unit = self
+		_initialize_interpreter()
+		code_editor.show_editor()
 			
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("MOUSE_LEFT") and is_unit_selected and not MouseManager.is_mouse_inside_panel_manager:
 		box_selector.hide_box_selector()
 		is_unit_selected = false
-		PanelManager.current_commands.clear()
+		PanelManager.current_command = null
 			
 func log_to_editor(message: String, type: String = "info") -> void:
-	if code_layer and code_layer.has_method("log_message"):
-		code_layer.log_message(message, type)
+	if code_editor and code_editor.has_method("log_message"):
+		code_editor.log_message(message, type)
 	else:
 		print("[%s - %s] %s" % [name, type.to_upper(), message])

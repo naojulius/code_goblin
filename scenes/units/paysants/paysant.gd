@@ -1,7 +1,11 @@
 # Paysant.gd
 extends Unit
 class_name Paysant
+
 const STRING_NAME: String = "Paysant"
+var COMMAND = preload("uid://dusqt5u02uyny") #resource
+
+
 @export var base_speed := 40.0
 @export var max_resource_capacity := 10
 
@@ -10,12 +14,8 @@ var _resource_carried_name := ""
 
 func _ready() -> void:
 	super()
-	commands.append_array(
-		[
-			preload("uid://co4pgcae8l323"), #Copy Command
-			preload("uid://dgtxmrvgt7o7m"), #Code Command
-		]
-	)
+	COMMAND.unit = self
+	command = COMMAND
 
 # Surcharge de la méthode d'initialisation pour attribuer le bon interpréteur
 func _initialize_interpreter() -> void:
@@ -24,13 +24,13 @@ func _initialize_interpreter() -> void:
 	
 	match InterpreterManager.current_language:
 		"c#":
-			code_layer.text_edit.text = PaysantDefaultCode.DEFAULT_CSHARP_CODE
+			code_editor.code_editor.text = PaysantDefaultCode.DEFAULT_CSHARP_CODE
 		"python":
-			code_layer.text_edit.text = PaysantDefaultCode.DEFAULT_PYTHON_CODE
+			code_editor.code_editor.text = PaysantDefaultCode.DEFAULT_PYTHON_CODE
 			
-	code_layer.file_button.text = str(STRING_NAME, InterpreterManager.file_extension)
-	code_layer.text_edit.syntax_highlighter = InterpreterManager.get_highlighter()
-	code_layer.update_lines()
+	code_editor.file_button.text = str(STRING_NAME, InterpreterManager.file_extension)
+	code_editor.code_editor.syntax_highlighter = InterpreterManager.get_highlighter()
+	code_editor.update_lines()
 # --- API appelée par l'interpréteur C# ---
 
 func set_max_capacity(new_capacity: int) -> void:

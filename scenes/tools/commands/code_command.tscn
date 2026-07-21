@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dgtxmrvgt7o7m"]
+[gd_scene format=3 uid="uid://dt5xmylg5nude"]
 
-[ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="1_8wmeb"]
-[ext_resource type="Script" uid="uid://cyjifuoaap5po" path="res://scenes/tools/commands/code_command.gd" id="1_dauud"]
-[ext_resource type="Texture2D" uid="uid://cr47xg7kpwi01" path="res://assets/textures/icons/code.png" id="2_dauud"]
+[ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="1_ccnlc"]
+[ext_resource type="Script" uid="uid://bgeweeoiqr761" path="res://scenes/tools/commands/code_command.gd" id="1_dauud"]
+[ext_resource type="Texture2D" uid="uid://cr47xg7kpwi01" path="res://assets/textures/icons/code.png" id="2_bd3ir"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8fpq"]
 bg_color = Color(0.6, 0.6, 0.6, 0.38039216)
@@ -14,17 +14,18 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 script = ExtResource("1_dauud")
+_command_name = "code_command"
 
 [node name="CommandButton" type="Button" parent="." unique_id=1248616962]
 custom_minimum_size = Vector2(89, 89)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("1_8wmeb")
+theme_override_fonts/font = ExtResource("1_ccnlc")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_q8fpq")
 text = "Code"
-icon = ExtResource("2_dauud")
+icon = ExtResource("2_bd3ir")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true

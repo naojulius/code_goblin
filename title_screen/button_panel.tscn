@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://es1d2w448ria"]
+
+[ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="1_cxulb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dq6q"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbjqi"]
+draw_center = false
+
+[node name="ButtonPanel" type="Panel" unique_id=308314011]
+custom_minimum_size = Vector2(0, 50)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2dq6q")
+
+[node name="Button" type="Button" parent="." unique_id=457503086]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_cxulb")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_vbjqi")
+text = "Single Player"

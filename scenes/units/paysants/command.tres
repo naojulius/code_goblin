@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Command" format=3 uid="uid://dusqt5u02uyny"]
+
+[ext_resource type="PackedScene" uid="uid://d2ljxyebaetiu" path="res://scenes/units/paysants/avatar.tscn" id="1_fy311"]
+[ext_resource type="PackedScene" uid="uid://dt5xmylg5nude" path="res://scenes/tools/commands/code_command.tscn" id="2_ftnyn"]
+[ext_resource type="Script" uid="uid://csn8uy2pg81ow" path="res://scenes/tools/commands/command.gd" id="2_fy311"]
+
+[resource]
+script = ExtResource("2_fy311")
+avatar = ExtResource("1_fy311")
+metadata/_custom_type_script = "uid://csn8uy2pg81ow"

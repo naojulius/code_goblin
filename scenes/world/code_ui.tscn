@@ -1,0 +1,436 @@
+[gd_scene format=3 uid="uid://xqhejs55qmby"]
+
+[ext_resource type="Script" uid="uid://lpij1tmeivnq" path="res://scenes/world/code_ui.gd" id="1_sayan"]
+[ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="2_sayan"]
+[ext_resource type="Script" uid="uid://cmnnaxymw46xq" path="res://scenes/code_editor/language_label.gd" id="3_bw3gc"]
+[ext_resource type="Texture2D" uid="uid://dfyf3ees6obkh" path="res://assets/textures/icons/play.svg" id="4_q3on1"]
+[ext_resource type="Texture2D" uid="uid://bhtteu17gqji2" path="res://assets/textures/icons/settings.svg" id="5_7gs18"]
+[ext_resource type="Texture2D" uid="uid://s2uigkkdy2cf" path="res://assets/textures/icons/close.svg" id="6_qhuo7"]
+[ext_resource type="PackedScene" uid="uid://cq448ycxv6i03" path="res://scenes/code_editor/code_line.tscn" id="7_qisu7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wu06"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50sl8"]
+content_margin_left = 5.0
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_vrhkf"]
+font = ExtResource("2_sayan")
+font_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2duf"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.23103678, 0.23103684, 0.23103672, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cg4g5"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.115634866, 0.11563488, 0.11563481, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsxr1"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrhkf"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpxwm"]
+draw_center = false
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_47am0"]
+number_color = Color(0.81960785, 0.6039216, 0.4, 1)
+symbol_color = Color(1, 1, 1, 1)
+function_color = Color(0.38039216, 0.6862745, 0.9372549, 1)
+member_variable_color = Color(1, 0.47058824, 0.14117648, 1)
+keyword_colors = {
+"def": Color(0.8784314, 0.42352942, 0.45882353, 1),
+"else": Color(0.8784314, 0.42352942, 0.45882353, 1),
+"if": Color(0.8784314, 0.42352942, 0.45882353, 1),
+"not": Color(0.8784314, 0.42352942, 0.45882353, 1)
+}
+color_regions = {
+"/* *": Color(0.41568628, 0.41568628, 0.41568628, 1),
+"//": Color(0.41568628, 0.41568628, 0.41568628, 1)
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1588"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.17641908, 0.17641911, 0.17641899, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aon1a"]
+size = Vector2(961, 1083)
+
+[sub_resource type="Animation" id="Animation_aon1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CodeArea/CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vrhkf"]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CodeArea/CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ulbfw"]
+resource_name = "init"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CodeArea/CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bsxr1"]
+resource_name = "show"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CodeArea/CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08529276),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_beo4a"]
+_data = {
+&"RESET": SubResource("Animation_aon1a"),
+&"hide": SubResource("Animation_vrhkf"),
+&"init": SubResource("Animation_ulbfw"),
+&"show": SubResource("Animation_bsxr1")
+}
+
+[node name="UiCode" type="Control" unique_id=308270761 groups=["code_editor"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_sayan")
+
+[node name="CodeEditorPanel" type="Panel" parent="." unique_id=107279369]
+custom_minimum_size = Vector2(956, 1080)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -956.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4wu06")
+
+[node name="MarginContainer" type="MarginContainer" parent="CodeEditorPanel" unique_id=1004167055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CodeEditorPanel/MarginContainer" unique_id=940290154]
+layout_mode = 2
+
+[node name="Header" type="Panel" parent="CodeEditorPanel/MarginContainer/VBoxContainer" unique_id=1437251813]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer/Header" unique_id=129928421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CodeEditorPanel/MarginContainer/VBoxContainer/Header/HBoxContainer" unique_id=1493034779]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_50sl8")
+text = "Unit 10"
+fit_content = true
+vertical_alignment = 1
+
+[node name="LanguageContainer" type="HBoxContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer/Header/HBoxContainer" unique_id=994875706]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LanguageLabel" type="Label" parent="CodeEditorPanel/MarginContainer/VBoxContainer/Header/HBoxContainer/LanguageContainer" unique_id=85058998]
+layout_mode = 2
+text = "C#"
+label_settings = SubResource("LabelSettings_vrhkf")
+script = ExtResource("3_bw3gc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer/Header/HBoxContainer" unique_id=691732838]
+layout_mode = 2
+alignment = 2
+
+[node name="SaveButton" type="Button" parent="CodeEditorPanel/MarginContainer/VBoxContainer/Header/HBoxContainer/HBoxContainer" unique_id=430326070]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("4_q3on1")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SettingButton" type="Button" parent="CodeEditorPanel/MarginContainer/VBoxContainer/Header/HBoxContainer/HBoxContainer" unique_id=1303648372]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("5_7gs18")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ExitButton" type="Button" parent="CodeEditorPanel/MarginContainer/VBoxContainer/Header/HBoxContainer/HBoxContainer" unique_id=273210378]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("6_qhuo7")
+icon_alignment = 1
+expand_icon = true
+
+[node name="FileContent" type="Panel" parent="CodeEditorPanel/MarginContainer/VBoxContainer" unique_id=2112704867]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer/FileContent" unique_id=1265682801]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer/FileContent/MarginContainer" unique_id=1784926841]
+layout_mode = 2
+
+[node name="File_Button_1" type="Button" parent="CodeEditorPanel/MarginContainer/VBoxContainer/FileContent/MarginContainer/HBoxContainer" unique_id=2071238063]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sayan")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_o2duf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cg4g5")
+text = "text.cs"
+
+[node name="TextEdit" type="MarginContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer" unique_id=2027436828]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer/TextEdit" unique_id=356306966]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LineNumberMargin" type="MarginContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer/TextEdit/HBoxContainer" unique_id=1915146978]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+
+[node name="LineContainer" type="VBoxContainer" parent="CodeEditorPanel/MarginContainer/VBoxContainer/TextEdit/HBoxContainer/LineNumberMargin" unique_id=424556361]
+layout_mode = 2
+
+[node name="Line_01" parent="CodeEditorPanel/MarginContainer/VBoxContainer/TextEdit/HBoxContainer/LineNumberMargin/LineContainer" unique_id=334790801 instance=ExtResource("7_qisu7")]
+layout_mode = 2
+
+[node name="CodeEditor" type="TextEdit" parent="CodeEditorPanel/MarginContainer/VBoxContainer/TextEdit/HBoxContainer" unique_id=335767232]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_sayan")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_bsxr1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vrhkf")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_bpxwm")
+emoji_menu_enabled = false
+middle_mouse_paste_enabled = false
+scroll_smooth = true
+minimap_draw = true
+caret_blink = true
+syntax_highlighter = SubResource("CodeHighlighter_47am0")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+
+[node name="ConsolePanel" type="Panel" parent="CodeEditorPanel/MarginContainer/VBoxContainer" unique_id=1907345210]
+custom_minimum_size = Vector2(0, 145)
+layout_mode = 2
+
+[node name="Console" type="RichTextLabel" parent="CodeEditorPanel/MarginContainer/VBoxContainer/ConsolePanel" unique_id=788797744]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_sayan")
+theme_override_fonts/bold_font = ExtResource("2_sayan")
+theme_override_fonts/bold_italics_font = ExtResource("2_sayan")
+theme_override_fonts/italics_font = ExtResource("2_sayan")
+theme_override_fonts/mono_font = ExtResource("2_sayan")
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+theme_override_font_sizes/bold_italics_font_size = 25
+theme_override_font_sizes/italics_font_size = 25
+theme_override_font_sizes/mono_font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1588")
+bbcode_enabled = true
+
+[node name="CodeArea" type="Area2D" parent="." unique_id=1319343707 groups=["code_manager_area"]]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="CodeArea" unique_id=1885713605]
+position = Vector2(1441.5, 538.5)
+shape = SubResource("RectangleShape2D_aon1a")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1363464938]
+root_node = NodePath("../CodeEditorPanel")
+libraries/ = SubResource("AnimationLibrary_beo4a")
+autoplay = &"init"
+speed_scale = 2.0

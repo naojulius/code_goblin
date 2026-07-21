@@ -1,7 +1,13 @@
 extends Building
 
+var COMMAND = preload("uid://btq0g6lnyq8e2")
+
+
 func _ready() -> void:
 	super()
+	COMMAND.unit = self
+	command = COMMAND
+	
 	add_to_group("inns")
 	building_name = "Inn"
 
