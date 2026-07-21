@@ -8,6 +8,7 @@ var trunk_showed: bool = false
 var group_name: String = "wood"
 
 func _ready() -> void:
+	super()
 	add_to_group(group_name)
 
 func _process(_delta: float) -> void:
