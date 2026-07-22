@@ -2,25 +2,35 @@
 extends Control
 
 const BUTTON_PANEL = preload("uid://es1d2w448ria")
+const SFX_MOUSE_ENTER_BUTTON = preload("uid://mwn2x5dkd6a5")
+const SFX_MOUSE_CONFIRM_BUTTON = preload("uid://b0q5xnlnqi0k5")
+const WORLD = "res://scenes/world/world.tscn"
+
 const FREQ_MIN: float = 0.0   # Plage modifiée pour capter la mélodie Chiptune
 const FREQ_MAX: float = 400.0
 
 @onready var button_box_container: VBoxContainer = $ButtonBoxContainer
 @onready var audio_player: AudioStreamPlayer = $Sounds/BackgroundAudioPlayer
 @onready var title_label: RichTextLabel = $TitleLabel
+@onready var buttons_audio_player: AudioStreamPlayer = $Sounds/ButtonsAudioPlayer
+@onready var map_selector: Control = $MapSelector
+
 
 var spectrum_analyzer: AudioEffectInstance
 
 const menu_buttons: Array = [
-	{"button_text": "Single Player"},
-	{"button_text": "Online"},
-	{"button_text": "Local multiplayer"},
+	{
+		"button_text": "Play demo",
+	},
+	#{"button_text": "Online"},
+	#{"button_text": "Local multiplayer"},
 	{"button_text": "Options"},
 	{"button_text": "Credits"},
 	{"button_text": "exit"}
 ]
 
 func _ready() -> void:
+	map_selector.connect("confirm_map", _on_confirm_map)
 	# 1. Initialisation de l'analyseur audio uniquement au runtime (pas dans l'éditeur)
 	if not Engine.is_editor_hint():
 		_setup_audio_spectrum()
@@ -38,8 +48,9 @@ func _ready() -> void:
 			button.text = str(button_info.button_text)
 			
 			# Connexion moderne des signaux Godot 4
-			button.mouse_entered.connect(_on_button_mouse_entered.bind(button_panel, button.name))
-			button.mouse_exited.connect(_on_button_mouse_exited.bind(button_panel, button.name))
+			button.mouse_entered.connect(_on_button_mouse_entered.bind(button_panel, button))
+			button.mouse_exited.connect(_on_button_mouse_exited.bind(button_panel, button))
+			button.pressed.connect(_on_button_pressed.bind(button, button_info))
 			
 		button_box_container.add_child(button_panel)
 
@@ -78,15 +89,37 @@ func _setup_audio_spectrum() -> void:
 		push_error("No audio effect found on Master bus. Add AudioEffectSpectrumAnalyzer to Master bus.")
 
 
-func _on_button_mouse_entered(button_panel: Panel, button_name: String) -> void:
-	print("entered: ", button_name)
+func _on_button_mouse_entered(_button_panel: Panel, button: Button) -> void:
+	if button.disabled: return
+	buttons_audio_player.stream = SFX_MOUSE_ENTER_BUTTON
+	buttons_audio_player.play()
+	button.add_theme_font_size_override("font_size", 40)
 
-func _on_button_mouse_exited(button_panel: Panel, button_name: String) -> void:
-	print("exit: ", button_name)
-
+func _on_button_mouse_exited(_button_panel: Panel, button: Button) -> void:
+	if button.disabled: return
+	button.add_theme_font_size_override("font_size", 30)
+	
+func _on_button_pressed(button: Button, _button_info: Dictionary):
+	buttons_audio_player.stream = SFX_MOUSE_CONFIRM_BUTTON
+	buttons_audio_player.play()
+	await get_tree().create_timer(0.1).timeout
+	for _existing_button in get_tree().get_nodes_in_group("ui_buttons"):
+		_existing_button.disabled = true
+	
+	match button.name:
+		"PlayDemoButton":
+			map_selector.play_show()
+	
+	
+	
 func to_pascal_case(text: String) -> String:
 	var words = text.split(" ")
 	var result := ""
 	for word in words:
 		result += word.capitalize()
 	return result
+
+
+func _on_confirm_map():
+	InteractiveSceneChanger.load_scene(WORLD)
+	pass

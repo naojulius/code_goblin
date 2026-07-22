@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dt1qff0faywvf"]
+
+[ext_resource type="Script" uid="uid://b5ja1fvym5q2d" path="res://scenes/world/map/map_node.gd" id="1_eofmr"]
+[ext_resource type="PackedScene" uid="uid://davfj2vot5xvr" path="res://scenes/world/map/map_000/generator.scn" id="2_dnmew"]
+[ext_resource type="PackedScene" uid="uid://c4gueftqskrf4" path="res://scenes/world/map/base_marker.tscn" id="3_3uq5d"]
+[ext_resource type="Script" uid="uid://cjy0tgcf0ylkh" path="res://scenes/world/map/base_marker.gd" id="4_w6hsf"]
+[ext_resource type="PackedScene" uid="uid://b0gsqwppy2pvr" path="res://scenes/resources/rock/rock_a.tscn" id="5_fb2qf"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_57kor"]
+noise_type = 0
+frequency = 0.011
+
+[node name="Map_000" type="Node2D" unique_id=1368238286]
+script = ExtResource("1_eofmr")
+
+[node name="Map" parent="." unique_id=1527293692 instance=ExtResource("2_dnmew")]
+noise = SubResource("FastNoiseLite_57kor")
+file_path = ""
+
+[node name="BaseMarkers" type="Node2D" parent="." unique_id=2078548132]
+
+[node name="Base_0" parent="BaseMarkers" unique_id=536810575 instance=ExtResource("3_3uq5d")]
+position = Vector2(959, -1333)
+script = ExtResource("4_w6hsf")
+metadata/is_occupied = true
+
+[node name="Base_1" parent="BaseMarkers" unique_id=968599513 instance=ExtResource("3_3uq5d")]
+position = Vector2(-157, 481)
+script = ExtResource("4_w6hsf")
+metadata/is_occupied = false
+
+[node name="Resources" type="Node2D" parent="." unique_id=290886695]
+
+[node name="RockA7" parent="Resources" unique_id=854764138 instance=ExtResource("5_fb2qf")]
+z_index = 1
+position = Vector2(1113, -1350)
+
+[node name="RockA8" parent="Resources" unique_id=698557427 instance=ExtResource("5_fb2qf")]
+z_index = 1
+position = Vector2(-163, 606)
+
+[node name="Buildings" type="Node2D" parent="." unique_id=1492470994]
+
+[node name="Units" type="Node2D" parent="." unique_id=1266231563]

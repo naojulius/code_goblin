@@ -28,6 +28,9 @@ extends Node2D
 @export_range(1, 8, 1) var tree_cell_size: int = 2
 @export_range(1, 8, 1) var rock_cell_size: int = 8
 
+@export_group("THUMBNAIL")
+@export var file_path: String = ""
+
 
 # --- 4 LEVELS OF SEA ---
 const WATER_DEEP_4_SOURCE: int = 0
@@ -57,14 +60,76 @@ const DETAIL_2_COORDS: Vector2i = Vector2i(1, 1)
 # Dictionnaire pour garder en mémoire les cellules réservées par les arbres
 var reserved_cells: Dictionary = {}
 
+@onready var render_png_button: Button = $Control/Control/Button
+@onready var render_camera: Camera2D = $RenderCamera
+
+
 func _ready() -> void:
+	render_png_button.connect("pressed", _on_render_png)
 	# Initialisation et configuration du Noise avec les variables exportées
 	if not noise:
 		noise = FastNoiseLite.new()
 	
 	generate_procedural_map()
 	#center_camera_on_map()
+	
+func _on_render_png():
+	if not file_path:
+		push_error("Thumbnail path not set.")
+	if not render_camera:
+		push_error("Aucune Camera2D fournie pour la capture.")
+		return
 
+	# 1. Création du SubViewport avec fond transparent
+	var viewport := SubViewport.new()
+	viewport.transparent_bg = true
+	
+	var viewport_size := get_viewport().get_visible_rect().size
+	viewport.size = Vector2i(viewport_size)
+	
+	viewport.world_2d = render_camera.get_world_2d()
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	
+	# 2. Configuration de la caméra
+	var cam_copy := Camera2D.new()
+	cam_copy.global_position = render_camera.global_position
+	cam_copy.zoom = render_camera.zoom
+	cam_copy.offset = render_camera.offset
+	cam_copy.rotation = render_camera.rotation
+	cam_copy.ignore_rotation = render_camera.ignore_rotation
+	
+	cam_copy.enabled = true
+	cam_copy.make_current()
+	
+	viewport.add_child(cam_copy)
+	add_child(viewport)
+	
+	# 3. Attente du rendu
+	await RenderingServer.frame_post_draw
+	await RenderingServer.frame_post_draw
+	
+	# 4. Récupération de l'image
+	var texture := viewport.get_texture()
+	var image := texture.get_image()
+	
+	# --- ROGNAGE DES PARTIES TRANSPARENTES ---
+	# get_used_rect() trouve le rectangle exact contenant des pixels visibles (alpha > 0)
+	var used_rect := image.get_used_rect()
+	
+	if used_rect.has_area():
+		# On découpe l'image sur ce rectangle précis
+		image = image.get_region(used_rect)
+	
+	# 5. Sauvegarde
+	var err := image.save_png(file_path)
+	if err == OK:
+		print("Capture réussie et rognée ! Taille finale : ", image.get_size())
+	else:
+		push_error("Erreur sauvegarde : ", err)
+		
+	# 6. Nettoyage
+	viewport.queue_free()
+	
 func generate_procedural_map() -> void:
 	# Sécurité si exécuté depuis l'éditeur
 	if not tile_map_layer or not detail_map_layer or not tree_container:

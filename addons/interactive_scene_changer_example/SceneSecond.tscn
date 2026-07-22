@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4tw1x6c47j3e"]
+[gd_scene format=3 uid="uid://b4tw1x6c47j3e"]
 
-[ext_resource type="Script" path="res://addons/interactive_scene_changer_example/SceneChangeExample.gd" id="2"]
+[ext_resource type="Script" uid="uid://mdkidjo1byu7" path="res://addons/interactive_scene_changer_example/SceneChangeExample.gd" id="2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2fd8s"]
 
@@ -13,14 +13,14 @@ sky = SubResource("Sky_2khg2")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ybsdj"]
 
-[node name="SceneFirst" type="Node3D"]
+[node name="SceneFirst" type="Node3D" unique_id=2110538096]
 script = ExtResource("2")
 to_scene = "res://addons/interactive_scene_changer_example/SceneFirst.tscn"
 obj_count = 100
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1112081569]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1737257611]
 anchors_preset = -1
 anchor_left = 0.05
 anchor_top = 0.47
@@ -28,11 +28,11 @@ anchor_right = 0.95
 anchor_bottom = 0.53
 text = "Go to first scene"
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="." unique_id=1934473734]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=424221969]
 environment = SubResource("Environment_qfqgt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1295481976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.24339)
 mesh = SubResource("BoxMesh_ybsdj")

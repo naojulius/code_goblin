@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://daoqa6e1cqyx6" path="res://scenes/units/paysants/paysant.gd" id="1_apki4"]
 [ext_resource type="PackedScene" uid="uid://s3avgqj34skl" path="res://scenes/tools/box_selector/box_selector.tscn" id="2_7khmq"]
 [ext_resource type="Texture2D" uid="uid://j5vtxtj5dc5v" path="res://scenes/units/paysants/textures/orc_paysant.png" id="2_28xpp"]
+[ext_resource type="Material" uid="uid://d2eglv6vqirx1" path="res://themes/color_changer/color_changer.tres" id="3_7khmq"]
+[ext_resource type="Script" uid="uid://b8ig30x7pyo5n" path="res://scripts/system/sprite.gd" id="5_i6anx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28xpp"]
 size = Vector2(14, 15)
@@ -239,10 +241,12 @@ position = Vector2(0, -7.5)
 shape = SubResource("CapsuleShape2D_apki4")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2014270774]
+material = ExtResource("3_7khmq")
 position = Vector2(9.536743e-07, -7.5)
 texture = ExtResource("2_28xpp")
 hframes = 5
 vframes = 7
+script = ExtResource("5_i6anx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=652991102]
 layer = 2

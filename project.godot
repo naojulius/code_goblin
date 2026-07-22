@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CODE CIVILIZATION"
-run/main_scene="uid://da0dif3jx5nm5"
+run/main_scene="uid://dtglvmpckxtwu"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,6 +26,9 @@ InterpreterManager="*uid://ct04wm8u6b4ih"
 InteractiveSceneChanger="*uid://ds3vx8deuihgw"
 PanelManager="*uid://cihx61dcfqlqk"
 MouseManager="*uid://d77rqpdtexl2"
+TimeManager="*uid://xtegk0wdaobp"
+MapManager="*uid://cy8ck2ruipq5g"
+GameManager="*uid://mydkxs7pwpg2"
 
 [display]
 
@@ -47,6 +50,7 @@ folder_colors={
 "res://scenes/resources/tree/textures/": "green",
 "res://scenes/tools/commands/": "red",
 "res://scenes/units/paysants/textures/": "green",
+"res://scenes/world/map/": "purple",
 "res://scenes/world/map/textures/": "green"
 }
 
@@ -55,6 +59,8 @@ folder_colors={
 panel_manager_area=""
 code_manager_area=""
 code_editor=""
+ui_buttons=""
+render_camera=""
 
 [input]
 

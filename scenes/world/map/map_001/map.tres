@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Map" format=3 uid="uid://cowan2c0ghdco"]
+
+[ext_resource type="Script" uid="uid://b7jdqlo7tif2a" path="res://scenes/world/map/map.gd" id="1_i5utd"]
+[ext_resource type="PackedScene" uid="uid://dqo343lgjgc2u" path="res://scenes/world/map/map_001/generator.scn" id="1_vxl8u"]
+
+[resource]
+script = ExtResource("1_i5utd")
+map_generator = ExtResource("1_vxl8u")
+map_name = "Aethelgard"
+map_thumbnail = "uid://cv11v6chvpdc4"
+metadata/_custom_type_script = "uid://b7jdqlo7tif2a"

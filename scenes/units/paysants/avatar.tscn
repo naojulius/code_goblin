@@ -2,6 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="1_e0ywh"]
 [ext_resource type="Script" uid="uid://qu5550iuwn27" path="res://scripts/avatar/avatar.gd" id="1_n6we6"]
+[ext_resource type="Material" uid="uid://d2eglv6vqirx1" path="res://themes/color_changer/color_changer.tres" id="2_y2fu8"]
+[ext_resource type="Script" uid="uid://b8ig30x7pyo5n" path="res://scripts/system/sprite.gd" id="3_5jqid"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pt3v"]
 bg_color = Color(0, 0, 0, 1)
@@ -70,15 +72,16 @@ grow_vertical = 2
 pivot_offset = Vector2(87.5, 87.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_8pt3v")
 script = ExtResource("1_n6we6")
-has_animation = true
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2031335386]
+material = ExtResource("2_y2fu8")
 position = Vector2(88.00001, 88.499985)
 scale = Vector2(10, 10)
 texture = SubResource("CompressedTexture2D_jnt2h")
 hframes = 5
 vframes = 7
 frame = 1
+script = ExtResource("3_5jqid")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2090926563]
 libraries/ = SubResource("AnimationLibrary_b57ls")

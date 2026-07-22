@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Map" format=3 uid="uid://b6li2ha8vu1h7"]
+
+[ext_resource type="Script" uid="uid://b7jdqlo7tif2a" path="res://scenes/world/map/map.gd" id="1_g2pqi"]
+[ext_resource type="PackedScene" uid="uid://bomjku0kf5kji" path="res://scenes/world/map/map_002/generator.scn" id="1_que86"]
+
+[resource]
+script = ExtResource("1_g2pqi")
+map_generator = ExtResource("1_que86")
+map_name = "Eldoria"
+map_thumbnail = "uid://bh04adn23bpnw"
+metadata/_custom_type_script = "uid://b7jdqlo7tif2a"

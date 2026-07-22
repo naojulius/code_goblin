@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://1ijkbcpnglyk" path="res://scenes/buildings/inn/inn_a.gd" id="1_c325c"]
 [ext_resource type="Texture2D" uid="uid://th2mmh74n7uk" path="res://scenes/buildings/textures/inn.png" id="1_p6bs3"]
+[ext_resource type="Material" uid="uid://d2eglv6vqirx1" path="res://themes/color_changer/color_changer.tres" id="3_cgna3"]
 [ext_resource type="PackedScene" uid="uid://s3avgqj34skl" path="res://scenes/tools/box_selector/box_selector.tscn" id="3_egf7l"]
 [ext_resource type="Texture2D" uid="uid://c0jcoun44856y" path="res://scenes/buildings/textures/buildings_texture.png" id="3_uy4ow"]
+[ext_resource type="Script" uid="uid://b8ig30x7pyo5n" path="res://scripts/system/sprite.gd" id="5_tc678"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6bs3"]
 size = Vector2(32, 16)
@@ -49,12 +51,14 @@ texture = ExtResource("1_p6bs3")
 region_enabled = true
 region_rect = Rect2(48, 8, 16, 8)
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="SpriteNode_Intact" unique_id=671911691]
+[node name="Sprite" type="Sprite2D" parent="SpriteNode_Intact" unique_id=671911691]
+material = ExtResource("3_cgna3")
 position = Vector2(0, -6.75)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_uy4ow")
 region_enabled = true
 region_rect = Rect2(96, 32, 32, 32)
+script = ExtResource("5_tc678")
 
 [node name="SensorArea" type="Area2D" parent="." unique_id=1063979132]
 

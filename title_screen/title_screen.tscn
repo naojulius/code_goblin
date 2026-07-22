@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dnitpfokexc06" path="res://title_screen/title_screen.gd" id="1_2dq6q"]
 [ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="2_2dq6q"]
 [ext_resource type="AudioStream" uid="uid://cmwor8j62vj8j" path="res://assets/musics/Unknown Caverns.ogg" id="3_2dq6q"]
+[ext_resource type="PackedScene" uid="uid://bd6wpkuivxvaj" path="res://title_screen/map_selector.tscn" id="4_vbjqi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxpbd"]
 bg_color = Color(0, 0, 0, 1)
@@ -92,5 +93,12 @@ grow_vertical = 2
 
 [node name="BackgroundAudioPlayer" type="AudioStreamPlayer" parent="Sounds" unique_id=1112632360]
 stream = ExtResource("3_2dq6q")
-volume_db = -5.0
+volume_db = -10.0
 autoplay = true
+
+[node name="ButtonsAudioPlayer" type="AudioStreamPlayer" parent="Sounds" unique_id=2067175817]
+
+[node name="MapSelector" parent="." unique_id=935920279 instance=ExtResource("4_vbjqi")]
+layout_mode = 1
+
+[editable path="MapSelector"]

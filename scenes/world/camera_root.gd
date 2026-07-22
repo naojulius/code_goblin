@@ -2,8 +2,8 @@ extends Node2D
 
 const CAMERA_MIN_ZOOM: float = 1.2
 const CAMERA_MAX_ZOOM: float = 2.0
-const CAMERA_ZOOM_SPEED: float = 2.0
-const CAMERA_ZOOM_STEP: float = 0.15
+const CAMERA_ZOOM_SPEED: float = 10.0
+const CAMERA_ZOOM_STEP: float = 0.2
 
 const MOUSE_UP = preload("uid://dj6mo3lddjh1i")
 const MOUSE_DOWN = preload("uid://dfwv1gpev8vv2")
@@ -26,6 +26,9 @@ var _target_zoom: float = 2.0
 var _current_cursor: Resource = null
 
 func _ready() -> void:
+	for cam in get_tree().get_nodes_in_group("render_camera"):
+		cam.enabled = false
+		
 	change_cursor(MOUSE_NORMAL)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	place_camera()

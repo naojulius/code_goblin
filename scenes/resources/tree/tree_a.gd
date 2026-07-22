@@ -25,7 +25,8 @@ func _process(_delta: float) -> void:
 		queue_free()
 		
 
-func add_label(text: String, _pos):
-	var label_node: Node2D = LABEL_NODE.instantiate()
-	add_child(label_node)
-	label_node.setup(text, _pos)
+func add_label(_text: String, _pos):
+	#var label_node: Node2D = LABEL_NODE.instantiate()
+	#add_child(label_node)
+	#label_node.setup(text, _pos)
+	pass

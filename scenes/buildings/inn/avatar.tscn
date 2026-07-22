@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://qu5550iuwn27" path="res://scripts/avatar/avatar.gd" id="1_0ey0x"]
 [ext_resource type="Texture2D" uid="uid://c0jcoun44856y" path="res://scenes/buildings/textures/buildings_texture.png" id="2_3mcxc"]
+[ext_resource type="Material" uid="uid://d2eglv6vqirx1" path="res://themes/color_changer/color_changer.tres" id="2_0680e"]
 [ext_resource type="FontFile" uid="uid://comoygv26o4oe" path="res://assets/fonts/VT323/VT323-Regular.ttf" id="2_kvvvv"]
+[ext_resource type="Script" uid="uid://b8ig30x7pyo5n" path="res://scripts/system/sprite.gd" id="4_0680e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pt3v"]
 bg_color = Color(0, 0, 0, 1)
@@ -32,11 +34,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8pt3v")
 script = ExtResource("1_0ey0x")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2031335386]
+material = ExtResource("2_0680e")
 position = Vector2(88, 80.5)
 scale = Vector2(4, 4)
 texture = ExtResource("2_3mcxc")
 region_enabled = true
 region_rect = Rect2(96, 32, 32, 32)
+script = ExtResource("4_0680e")
 
 [node name="Label" type="Label" parent="." unique_id=796831331]
 layout_mode = 1

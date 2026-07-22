@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Map" format=3 uid="uid://2gi0g0qrdq2v"]
+
+[ext_resource type="Script" uid="uid://b7jdqlo7tif2a" path="res://scenes/world/map/map.gd" id="1_1qmd5"]
+[ext_resource type="PackedScene" uid="uid://davfj2vot5xvr" path="res://scenes/world/map/map_000/generator.scn" id="1_8qu62"]
+
+[resource]
+script = ExtResource("1_1qmd5")
+map_generator = ExtResource("1_8qu62")
+map_name = "Drakor"
+map_thumbnail = "uid://degma70vuur6"
+metadata/_custom_type_script = "uid://b7jdqlo7tif2a"

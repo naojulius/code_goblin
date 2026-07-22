@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d2eglv6vqirx1"]
+
+[ext_resource type="Shader" uid="uid://b607ltcqhk33a" path="res://themes/color_changer/color_changer.gdshader" id="1_0uafy"]
+
+[resource]
+shader = ExtResource("1_0uafy")
+shader_parameter/target_color = Color(0, 0.6, 1, 1)
+shader_parameter/threshold = 0.2
